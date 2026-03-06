@@ -261,6 +261,7 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
 .hero-cta {
   display: inline-flex;
   align-items: center;
+  align-self: flex-start;
   gap: 8px;
   margin-top: 28px;
   padding: 11px 22px;
@@ -268,17 +269,15 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
   font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.01em;
-  color: var(--ink);
-  border: 1.5px solid var(--ink);
+  color: #fff;
+  background: var(--ink);
   border-radius: 100px;
   text-decoration: none;
-  transition: background 0.18s, color 0.18s, border-color 0.18s;
+  transition: background 0.18s;
 }
 
 .hero-cta:hover {
   background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
 }
 
 /* Timeline */
