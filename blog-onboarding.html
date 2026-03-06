@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Yaroslav Kovalchuk</title>
+  <title>The one thing about onboarding nobody documents — Yaroslav Kovalchuk</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,8 +21,8 @@
       </a>
       <div class="nav-links">
         <a href="index.html" class="nav-link nav-link--dim">Work</a>
-        <a href="about.html" class="nav-link nav-link--active">About</a>
-        <a href="blog.html" class="nav-link nav-link--dim">Writing</a>
+        <a href="about.html" class="nav-link nav-link--dim">About</a>
+        <a href="blog.html" class="nav-link nav-link--active">Writing</a>
         <a href="#" class="nav-link nav-link--dim">
           Resume
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -41,60 +41,53 @@
   <!-- HEADER -->
   <header class="cs-header">
     <div class="cs-header-inner">
-      <a href="index.html" class="cs-back">
+      <a href="blog.html" class="cs-back">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M11 7H3M3 7L6.5 3.5M3 7L6.5 10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        Work
+        Writing
       </a>
-      <h1 class="cs-title">Design, mostly.<br /><em>Opinions, always.</em></h1>
-      <p class="cs-intro">Been doing this since 2016. Started with small freelance projects, ended up at startups and apps with tens of millions of users. Still enjoy it.</p>
+      <p class="cs-eyebrow">Oct 2024</p>
+      <h1 class="cs-title">The one thing about onboarding<br /><em>nobody documents</em></h1>
     </div>
   </header>
 
-  <!-- THE SHORT VERSION -->
-  <section class="cs-section">
-    <div class="cs-section-inner">
-      <div class="cs-col-left">
-        <h2 class="cs-section-heading">The short version</h2>
-      </div>
-      <div class="cs-col-right">
-        <p>Started freelancing in 2016 — small businesses, brand work, landing pages. Good school. Then joined SupportYourApp's R&amp;D team as a UX/UI Designer — first real taste of designing inside a product org, with engineers, actual timelines, and decisions that shipped.</p>
-        <p>In 2023 went to Quidget as a founding designer. Built the whole product from scratch — brand, UI system, onboarding flow, marketing site, chat widget. Two years of wearing every design hat at once.</p>
-        <p>Since 2025, I've been at Headway working on conversion and growth for a book summary app with <em>55+ million users.</em></p>
-      </div>
-    </div>
-  </section>
+  <!-- POST BODY -->
+  <div class="post-inner">
+    <div class="post-body">
 
-  <!-- WHAT I CARE ABOUT -->
-  <section class="cs-section">
-    <div class="cs-section-inner">
-      <div class="cs-col-left">
-        <h2 class="cs-section-heading">What I care about</h2>
-      </div>
-      <div class="cs-col-right">
-        <p>I like design problems that are also product problems. Makes the work more interesting than just making things look nicer.</p>
-        <p>I write my own copy. I have opinions about flows and architecture, not just how things look. I tend to get involved in things slightly outside my job description — and that usually turns out fine.</p>
-        <p>Genuinely into AI — not the hype, the actual tools. I use Claude daily: for writing, thinking, prompts, research, decisions. It's changed how I work more than anything else in the last few years.</p>
-        <p><em>If I'm just styling something without thinking about what it's supposed to do, I get restless.</em></p>
-      </div>
-    </div>
-  </section>
+      <p>Everyone documents the steps. Almost nobody documents the goal.</p>
 
-  <!-- SAY HI -->
-  <section class="cs-section">
-    <div class="cs-section-inner">
-      <div class="cs-col-left">
-        <h2 class="cs-section-heading">Say hi</h2>
-      </div>
-      <div class="cs-col-right">
-        <p>Happy to talk about design, projects, or whatever.</p>
-        <p>
-          <a href="mailto:exlewan@gmail.com" class="footer-link">exlewan@gmail.com</a>&ensp;·&ensp;<a href="https://linkedin.com/in/yaroslavdesign" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>&ensp;·&ensp;<a href="https://t.me/yaroself" target="_blank" rel="noopener" class="footer-link">Telegram</a>
-        </p>
-      </div>
+      <p>Ask a team what their onboarding is trying to do and you'll get something like: "teach users how to use the product." That sounds right. It's usually wrong.</p>
+
+      <hr class="post-divider" />
+
+      <h2>What onboarding is actually for</h2>
+
+      <p>Onboarding isn't education. It's a race.</p>
+
+      <p>You're racing to the moment where the product delivers its core value — before the user loses patience and leaves. Everything before that moment is overhead. Necessary overhead, sometimes. But overhead.</p>
+
+      <p>When I redesigned the onboarding flow at Quidget, the original version had seven steps before you could see a working chat widget on your site. We thought they were all necessary. Setup, customization, AI training, colors, greeting message...</p>
+
+      <p>None of it was necessary. What users needed was to see the thing work. We got it to two steps. Enter your URL. See your widget. Everything else moved to after the aha moment.</p>
+
+      <h2>The thing nobody writes down</h2>
+
+      <p>The goal — the specific moment of value you're racing to — almost never makes it into a PRD, a brief, or a spec. It lives in someone's head. Sometimes the founder's. Sometimes nobody's.</p>
+
+      <p>This creates a problem: designers end up optimizing each step individually without a clear sense of what success looks like. You make the copy cleaner. You reduce friction in the form. You add a progress bar. All fine. But if you're optimizing steps toward the wrong destination, you're just polishing a path that leads nowhere useful.</p>
+
+      <h2>What I'd add to every onboarding brief</h2>
+
+      <p>One sentence: <em>"This onboarding is successful when the user experiences [specific thing] for the first time."</em></p>
+
+      <p>Not "completes setup." Not "understands the product." The specific thing. For Quidget it was: a fully functional, branded chat widget appearing on their actual website. For Headway it's: reading the first key insight from a book and feeling like they actually got something.</p>
+
+      <p>Write that down first. Design backwards from it.</p>
+
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -144,7 +137,6 @@
       el.addEventListener('mouseenter', () => cursor.classList.add('cursor--link'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--link'));
     });
-    // Hamburger menu
     const navToggle = document.getElementById('navToggle');
     navToggle.addEventListener('click', () => document.body.classList.toggle('nav-is-open'));
     document.querySelectorAll('.nav-links a').forEach(a => {
