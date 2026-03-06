@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Claude internal
+.claude/
+
+# Non-website files
+*.md
+*.tsx

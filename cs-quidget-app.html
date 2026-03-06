@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application UI — Yaroslav Kovalchuk</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600&family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-identity">
+        <span>Yaroslav Kovalchuk</span>
+        <span class="nav-divider">·</span>
+        <span class="nav-dim">Product Designer</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link nav-link--active">Work</a>
+        <a href="about.html" class="nav-link nav-link--dim">About</a>
+        <a href="#" class="nav-link nav-link--dim">
+          Resume
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3.5 12.5L12.5 3.5M12.5 3.5H6M12.5 3.5V10" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="cs-header">
+    <div class="cs-header-inner">
+      <a href="index.html" class="cs-back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M11 7H3M3 7L6.5 3.5M3 7L6.5 10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Work
+      </a>
+      <p class="cs-eyebrow">Quidget &thinsp;·&thinsp; 2023–2025</p>
+      <h1 class="cs-title">Application UI<br /><em>from the ground up</em></h1>
+      <p class="cs-intro">Designing the complete Quidget product — dashboard, AI configuration, testing, and channel management — as a single coherent system that makes running an AI agent feel effortless.</p>
+      <div class="cs-meta">
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Role</p>
+          <p class="cs-meta-value">Founding Product Designer</p>
+        </div>
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Timeline</p>
+          <p class="cs-meta-value">2023–2025</p>
+        </div>
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Company</p>
+          <p class="cs-meta-value">Quidget</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO IMAGE -->
+  <div class="cs-image-block cs-image-block--pale">
+    <div class="cs-image-block-inner">
+      <img src="Images/Application UI & UX at Quidget/12b3146c-3230-49f4-9248-e0ef0e878bff.png" alt="Quidget Dashboard" class="cs-img" />
+    </div>
+  </div>
+
+  <!-- THE PROBLEM -->
+  <section class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-col-left">
+        <h2 class="cs-section-heading">The problem</h2>
+      </div>
+      <div class="cs-col-right">
+        <p>When you're building a B2B SaaS product from scratch, there's no existing UI to iterate on. No legacy patterns to work around. No inherited navigation structure. Every screen, every interaction, every component needs to be designed — and they all need to feel like they belong to the same product.</p>
+        <p>The challenge is that a product's complexity directly reflects its capability. A powerful AI chatbot platform needs to let users configure model behavior, manage knowledge sources, customize branding, test responses, and deploy to multiple channels. <em>Making this feel effortless without hiding capability</em> is the core design problem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE: AI Model -->
+  <div class="cs-image-block cs-image-block--pale">
+    <div class="cs-image-block-inner">
+      <img src="Images/Application UI & UX at Quidget/597963db-13e2-4fdd-a6ed-13bc15f8e437.png" alt="AI Model configuration" class="cs-img" />
+    </div>
+  </div>
+  <p class="cs-caption">AI Model — selecting knowledge sources, training data, and conversation behavior in one unified view.</p>
+
+  <!-- THE APPROACH -->
+  <section class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-col-left">
+        <h2 class="cs-section-heading">The approach</h2>
+      </div>
+      <div class="cs-col-right">
+        <p>I designed the product as a single coherent system — not screen by screen, but as a design language applied consistently across every surface. Components were designed before screens. A shared library of inputs, cards, toggles, status indicators, and data displays was established first, then assembled into interfaces.</p>
+        <p>The navigation structure followed the user's mental model: set up your AI → train it → customize it → test it → deploy it. Each section of the product mapped directly to a step in that journey. Users arriving at any screen for the first time could orient themselves immediately — because the structure was intuitive, not inherited from engineering architecture.</p>
+        <p>This also meant that as new features were added across two years of development, <em>they felt native to the product rather than bolted on.</em> The system had enough flexibility to grow without breaking visual coherence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE: Test & Install -->
+  <div class="cs-image-block cs-image-block--pale">
+    <div class="cs-image-block-inner">
+      <img src="Images/Application UI & UX at Quidget/6919dab6-538d-4424-88e6-b11212cf1b06.png" alt="Test & Install" class="cs-img" />
+    </div>
+  </div>
+  <p class="cs-caption">Test & Install — live preview of the configured widget alongside the deployment snippet, reducing the gap between "done" and "live".</p>
+
+  <!-- THE CHALLENGE -->
+  <section class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-col-left">
+        <h2 class="cs-section-heading">The challenge</h2>
+      </div>
+      <div class="cs-col-right">
+        <p>The hardest problem in complex product design is progressive disclosure — deciding what's visible by default versus accessible on demand. Show too much and users feel overwhelmed. Hide too much and power users feel constrained. There's no universal answer, only a series of judgment calls informed by how different users approach the same task.</p>
+        <p>I solved this with consistent hierarchy: primary actions always immediately visible, secondary configuration accessible via tabs or expandable sections, advanced settings nested behind deliberate interaction. Users who wanted simplicity got simplicity. Users who needed control found it without hunting.</p>
+        <p>The other challenge was designing for context diversity. A law firm and a coffee shop both use the same product — completely different content, branding, conversation patterns, and goals. The interface needed to work well for both without feeling generic to either.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE: Channels -->
+  <div class="cs-image-block cs-image-block--pale">
+    <div class="cs-image-block-inner">
+      <img src="Images/Application UI & UX at Quidget/de0d0361-2709-4634-9e8b-5bf0e48bc0ca.png" alt="Channels integration" class="cs-img" />
+    </div>
+  </div>
+  <p class="cs-caption">Channels — connecting the AI agent to web chat, email, WhatsApp, and other surfaces from a single management view.</p>
+
+  <!-- THE RESULT -->
+  <section class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-col-left">
+        <h2 class="cs-section-heading">The result</h2>
+      </div>
+      <div class="cs-col-right">
+        <p>A product UI that doesn't call attention to itself. The goal was always that users spend their mental energy on their business, not on figuring out the tool. When the design is working, users don't notice it — they just get things done.</p>
+        <p>The same component system that powered the product UI fed directly into the marketing website and onboarding flow. One design language across every surface. Coherence at this level creates a quality signal that users feel before they can articulate why — and it's what separates products that feel like real companies from those that feel like prototypes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COPYRIGHT -->
+  <p style="text-align: center; padding: 20px var(--pad); font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); opacity: 0.25;">Work created for SupportYourApp, Inc. All rights reserved by SupportYourApp, Inc. Shared here for portfolio purposes.</p>
+
+  <!-- NEXT PROJECT -->
+  <div class="cs-next">
+    <a href="cs-quidget-web-chat.html" class="cs-next-inner">
+      <p class="cs-next-label">Next project</p>
+      <p class="cs-next-title">Web Chat that feels native <span class="cs-next-arrow">→</span></p>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-identity">
+        <span>Yaroslav Kovalchuk</span>
+        <span class="nav-divider">·</span>
+        <span class="nav-dim">Product Designer</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/yaroslavdesign" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        <a href="mailto:exlewan@gmail.com" class="footer-link">Email</a>
+        <a href="https://t.me/yaroself" target="_blank" rel="noopener" class="footer-link">Telegram</a>
+        <a href="https://x.com/yaroslav" target="_blank" rel="noopener" class="footer-link">X</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor">
+    <svg class="cursor-icon cursor-icon--eye" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.275 15.296C2.425 14.192 2 13.639 2 12c0-1.64.425-2.191 1.275-3.296C4.972 6.374 7.818 4 12 4c4.182 0 7.028 2.374 8.725 4.704C21.575 9.81 22 10.361 22 12c0 1.64-.425 2.192-1.275 3.296C19.028 17.626 16.182 20 12 20c-4.182 0-7.028-2.374-8.725-4.704Z"/>
+      <path stroke="white" stroke-width="1.5" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+    </svg>
+    <svg class="cursor-icon cursor-icon--arrow" width="20" height="20" viewBox="0 0 24 24" fill="white">
+      <path d="M6.4 18L5 16.6L14.6 7H6V5h12v12h-2V8.4L6.4 18z"/>
+    </svg>
+    <span class="cursor-label">View case study</span>
+  </div>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    let mouseX = -100, mouseY = -100;
+    let curX = -100, curY = -100;
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function animate() {
+      curX = lerp(curX, mouseX, 0.20);
+      curY = lerp(curY, mouseY, 0.20);
+      cursor.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+    document.addEventListener('mouseleave', () => cursor.classList.add('cursor--hidden'));
+    document.addEventListener('mouseenter', () => cursor.classList.remove('cursor--hidden'));
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor--link'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--link'));
+    });
+    // Hamburger menu
+    const navToggle = document.getElementById('navToggle');
+    navToggle.addEventListener('click', () => document.body.classList.toggle('nav-is-open'));
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => document.body.classList.remove('nav-is-open'));
+    });
+  </script>
+</body>
+</html>
