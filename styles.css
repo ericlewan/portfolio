@@ -835,6 +835,12 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
   .cs-next-title    { font-size: 28px; gap: 10px; }
 }
 
+/* Hide custom cursor on touch / mobile devices */
+@media (hover: none) {
+  * { cursor: auto !important; }
+  .cursor { display: none !important; }
+}
+
 /* Tiny phones */
 @media (max-width: 380px) {
   .hero-heading { font-size: 28px; }

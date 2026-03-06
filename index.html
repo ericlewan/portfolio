@@ -265,7 +265,7 @@
         const isFinal = i === words.length - 1;
 
         // Exit: slide up + fade out
-        el.style.transition = 'transform 0.35s ease-in, opacity 0.35s ease-in';
+        el.style.transition = 'transform 0.55s ease-in, opacity 0.55s ease-in';
         el.style.transform = 'translateY(-0.35em)';
         el.style.opacity = '0';
 
@@ -278,15 +278,15 @@
           void el.offsetWidth; // force reflow
 
           // Enter: slide up into place + fade in
-          el.style.transition = 'transform 0.35s ease-out, opacity 0.35s ease-out';
+          el.style.transition = 'transform 0.55s ease-out, opacity 0.55s ease-out';
           el.style.transform = 'translateY(0)';
           el.style.opacity = '1';
 
-          if (!isFinal) setTimeout(next, 1000);
-        }, 350);
+          if (!isFinal) setTimeout(next, 1800);
+        }, 550);
       }
 
-      setTimeout(next, 1200);
+      setTimeout(next, 1800);
     })();
   </script>
 </body>
