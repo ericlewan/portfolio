@@ -476,7 +476,7 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
 }
 
 /* About / Writing page headings use hero scale, not case-study scale */
-.cs-header .hero-heading { margin-bottom: 24px; }
+.cs-header .hero-heading { font-size: 56px; margin-bottom: 24px; }
 
 .cs-back {
   display: inline-flex;
@@ -830,6 +830,7 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
   /* Hero */
   .hero { padding: 52px var(--pad); gap: 36px; }
   .hero-heading { font-size: 40px; }
+  .cs-header .hero-heading { font-size: 44px; }
   .hero-desc    { font-size: 17px; }
 
   /* Timeline */
@@ -902,6 +903,7 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
   /* Hero */
   .hero         { padding: 40px var(--pad) 48px; gap: 28px; }
   .hero-heading { font-size: 32px; line-height: 1.2; }
+  .cs-header .hero-heading { font-size: 36px; }
   .hero-desc    { font-size: 15px; }
   .avatar       { width: 60px; height: 60px; }
 
