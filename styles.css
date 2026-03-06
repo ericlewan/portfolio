@@ -901,10 +901,11 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
   body.nav-is-open .nav-link--arrow  { display: flex; }
 
   /* Hero */
-  .hero         { padding: 40px var(--pad) 48px; gap: 28px; }
+  .hero         { padding: 40px var(--pad) 48px; gap: 16px; }
   .hero-heading { font-size: 32px; line-height: 1.2; }
   .cs-header .hero-heading { font-size: 36px; }
   .hero-desc    { font-size: 15px; }
+  .hero-cta     { margin-top: 16px; }
   .avatar       { width: 60px; height: 60px; }
 
   /* Timeline */
