@@ -474,6 +474,9 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
   padding: 56px var(--pad) 80px;
 }
 
+/* About / Writing page headings use hero scale, not case-study scale */
+.cs-header .hero-heading { margin-bottom: 24px; }
+
 .cs-back {
   display: inline-flex;
   align-items: center;
