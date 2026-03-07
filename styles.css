@@ -678,35 +678,6 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
   font-family: 'Geist', sans-serif;
 }
 
-/* About prose */
-.about-prose {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 80px var(--pad);
-}
-
-.about-prose-inner {
-  max-width: 640px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.about-prose p {
-  font-family: 'Geist', sans-serif;
-  font-size: 18px;
-  line-height: 1.7;
-  letter-spacing: 0.01em;
-  color: var(--ink);
-}
-
-.about-prose .about-links {
-  display: flex;
-  gap: 4px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
 /* Image grid 2×2 */
 .cs-image-grid {
   max-width: var(--max-w);
