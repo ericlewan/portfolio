@@ -382,6 +382,33 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
 .card-image--blue     { background: #E8F0FF; }
 .card-image--dark     { background: #141825; }
 .card-image--dark-green { background: #0D1A12; }
+.card-image--classified { background: #111318; }
+
+/* Classified card (case study in progress) */
+.card--classified { cursor: default; }
+.card--classified:hover .card-image { opacity: 1; }
+.card-classified-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  color: rgba(255,255,255,0.25);
+}
+.card-classified-lock { flex-shrink: 0; }
+.card-classified-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 180px;
+}
+.card-classified-bar {
+  height: 9px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 2px;
+}
 
 .card-img {
   width: 100%;
@@ -563,6 +590,7 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
 /* Image blocks */
 .cs-image-block--pale    { background: #F5F7FF; }
 .cs-image-block--light   { background: #F0F4FF; }
+.cs-image-block--blue    { background: #E8F0FF; }
 .cs-image-block--dark    { background: #141825; }
 .cs-image-block--headway { background: #FFF8F4; }
 

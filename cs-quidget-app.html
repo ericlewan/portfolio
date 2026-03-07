@@ -23,6 +23,7 @@
   <meta name="twitter:description" content="Case study: building the Quidget application UI from scratch — component system, design language, and a single visual system across every surface." />
   <meta name="twitter:image" content="https://yaroslav.design/Images/SEO.png" />
   <title>Application UI — Yaroslav Kovalchuk</title>
+  <link rel="icon" type="image/png" href="Images/favicon.png" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -171,14 +172,55 @@
     </div>
   </section>
 
+  <!-- WEB CHAT -->
+  <section class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-col-left">
+        <h2 class="cs-section-heading">Web Chat</h2>
+      </div>
+      <div class="cs-col-right">
+        <p>The most visible output of the platform was the widget itself — the thing that lived on customers' websites. Designing it meant solving a different kind of problem: making a third-party component feel like it belonged.</p>
+        <p>Most chat widgets look like widgets. They break immersion, signal "outsourced," reduce trust. I designed the Web Chat as a design system first — every visual property variable: colors, fonts, corner radius, avatar. The widget inherited brand identity from the agent setup flow automatically, so customers rarely had to configure how it looked.</p>
+        <p>The harder challenge was edge cases at infinite brand variation. A logo that looks great on white disappears on dark. An accent color chosen for fintech creates contrast problems for a children's education brand. I built in automatic light/dark switching based on background luminosity and capped saturation for accessibility — the system protected visual quality without requiring the business owner to understand any of it.</p>
+        <p><em>When the branding is right and the AI is on-point, users genuinely can't tell it's a third-party widget. That invisibility was the goal.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE: Web Chat -->
+  <div class="cs-image-block cs-image-block--pale">
+    <div class="cs-image-block-inner">
+      <img src="Images/Web Chat at Quidget/d9f18cb3-ecb6-45e8-9b10-05f99409775c.png" alt="Quidget Web Chat widget" class="cs-img" />
+    </div>
+  </div>
+  <p class="cs-caption">Web Chat — the end product. Fully customisable per brand, embedded across thousands of websites.</p>
+
+  <!-- MARKETING WEBSITE -->
+  <section class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-col-left">
+        <h2 class="cs-section-heading">Marketing site</h2>
+      </div>
+      <div class="cs-col-right">
+        <p>I also designed the marketing website — built on the same component system as the product, so the visual language stayed consistent from first impression to logged-in dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-image-block cs-image-block--blue">
+    <div class="cs-image-block-inner">
+      <img src="Images/Website at Quidget/99ce234f-1bfe-4dcf-9c9d-23690d2cf9e5.png" alt="Quidget marketing website" class="cs-img" />
+    </div>
+  </div>
+
   <!-- COPYRIGHT -->
   <p style="text-align: center; padding: 20px var(--pad); font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); opacity: 0.25;">Work created for SupportYourApp, Inc. All rights reserved by SupportYourApp, Inc. Shared here for portfolio purposes.</p>
 
   <!-- NEXT PROJECT -->
   <div class="cs-next">
-    <a href="cs-quidget-web-chat.html" class="cs-next-inner">
+    <a href="cs-remoter.html" class="cs-next-inner">
       <p class="cs-next-label">Next project</p>
-      <p class="cs-next-title">Web Chat that feels native <span class="cs-next-arrow">→</span></p>
+      <p class="cs-next-title">Remoter.me landing page <span class="cs-next-arrow">→</span></p>
     </a>
   </div>
 
@@ -192,7 +234,7 @@
       </div>
       <div class="footer-links">
         <a href="https://linkedin.com/in/yaroslavdesign" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-        <a href="mailto:exlewan@gmail.com" class="footer-link">Email</a>
+        <a href="mailto:hello@yaroslav.design" class="footer-link">Email</a>
         <a href="https://t.me/yaroself" target="_blank" rel="noopener" class="footer-link">Telegram</a>
         <a href="https://x.com/yaroslav" target="_blank" rel="noopener" class="footer-link">X</a>
       </div>
