@@ -127,26 +127,14 @@
       <h2 class="section-title">Selected projects</h2>
       <div class="project-grid">
 
-        <!-- 1. Headway (classified) -->
+        <!-- 1. Headway (in progress) -->
         <div class="card card--classified">
-          <div class="card-image card-image--classified">
-            <div class="card-classified-inner">
-              <svg class="card-classified-lock" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <div class="card-classified-bars">
-                <div class="card-classified-bar" style="width:68%"></div>
-                <div class="card-classified-bar" style="width:82%"></div>
-                <div class="card-classified-bar" style="width:50%"></div>
-                <div class="card-classified-bar" style="width:75%"></div>
-                <div class="card-classified-bar" style="width:38%"></div>
-              </div>
-            </div>
+          <div class="card-image card-image--headway">
+            <img src="Images/Other/Headway/Screens.png" alt="Headway app screens" class="card-img card-img--contain" />
           </div>
           <div class="card-meta">
             <p class="card-title">Designing for 55+ million users</p>
-            <p class="card-label">Headway &thinsp;·&thinsp; 2025 — Now &thinsp;·&thinsp; <em>Case study in progress</em></p>
+            <p class="card-label">Headway &thinsp;·&thinsp; 2025 — Now</p>
           </div>
         </div>
 
@@ -210,6 +198,9 @@
       <path stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.275 15.296C2.425 14.192 2 13.639 2 12c0-1.64.425-2.191 1.275-3.296C4.972 6.374 7.818 4 12 4c4.182 0 7.028 2.374 8.725 4.704C21.575 9.81 22 10.361 22 12c0 1.64-.425 2.192-1.275 3.296C19.028 17.626 16.182 20 12 20c-4.182 0-7.028-2.374-8.725-4.704Z"/>
       <path stroke="white" stroke-width="1.5" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
     </svg>
+    <svg class="cursor-icon cursor-icon--loader" width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path stroke="white" stroke-width="1.5" stroke-linecap="round" d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+    </svg>
     <svg class="cursor-icon cursor-icon--arrow" width="20" height="20" viewBox="0 0 24 24" fill="white">
       <path d="M6.4 18L5 16.6L14.6 7H6V5h12v12h-2V8.4L6.4 18z"/>
     </svg>
@@ -248,10 +239,11 @@
       card.addEventListener('mouseenter', () => {
         const isClassified = card.classList.contains('card--classified');
         cursor.classList.add('cursor--expanded');
+        if (isClassified) cursor.classList.add('cursor--wip');
         cursorLabel.textContent = isClassified ? 'Case study in progress' : 'View case study';
       });
       card.addEventListener('mouseleave', () => {
-        cursor.classList.remove('cursor--expanded', 'cursor--type-external');
+        cursor.classList.remove('cursor--expanded', 'cursor--type-external', 'cursor--wip');
         cursorLabel.textContent = 'View case study';
       });
     });
