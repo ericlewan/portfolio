@@ -1,0 +1,29 @@
+# Yaroslav Kovalchuk — Product Designer
+
+> Product designer with a background in building AI products from scratch. Currently designing conversion and engagement experiences for 55+ million users at Headway, the world's most downloaded book summary app.
+
+## About
+
+Yaroslav Kovalchuk is a product designer based in Europe. He co-founded and designed Quidget — an AI customer support platform — from zero to a live product used by thousands of businesses. He now works at Headway, focusing on onboarding, paywall, and core product experiences at scale.
+
+Contact: hello@yaroslav.design
+LinkedIn: https://linkedin.com/in/yaroslavdesign
+
+## Case Studies
+
+- [AI Agent Onboarding — Quidget](https://yaroslav.design/cs-quidget-ai-agent.html): Designing the onboarding flow for an AI agent builder. Reduced setup time and improved activation rates.
+- [Application UI & UX — Quidget](https://yaroslav.design/cs-quidget-app.html): Full product design of the Quidget dashboard, web chat widget, and marketing site.
+- [Remoter.me](https://yaroslav.design/cs-remoter.html): Designed a remote job board from scratch — brand, product, and web.
+- [Headway](https://yaroslav.design/cs-headway.html): Designing for 55+ million users at the world's most downloaded book summary app. Case study in progress.
+
+## Writing
+
+- [AI Tools for Designers](https://yaroslav.design/blog-ai-tools.html)
+- [Figma Component Architecture](https://yaroslav.design/blog-figma-components.html)
+- [Onboarding Design Patterns](https://yaroslav.design/blog-onboarding.html)
+
+## Pages
+
+- [Home](https://yaroslav.design/)
+- [About](https://yaroslav.design/about.html)
+- [Writing](https://yaroslav.design/blog.html)
