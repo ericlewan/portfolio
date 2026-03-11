@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- SEO -->
-  <meta name="description" content="Case study: building the Quidget application UI from scratch — component system, design language, and a single visual system across every surface." />
+  <meta name="description" content="Case study: designing the complete Quidget product from zero to launch — component system, design language, and a single visual system across every surface." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://yaroslav.design/cs-quidget-app.html" />
 
@@ -12,17 +12,17 @@
   <meta property="og:type" content="article" />
   <meta property="article:author" content="Yaroslav Kovalchuk" />
   <meta property="og:url" content="https://yaroslav.design/cs-quidget-app.html" />
-  <meta property="og:title" content="Application UI — Yaroslav Kovalchuk" />
-  <meta property="og:description" content="Case study: building the Quidget application UI from scratch — component system, design language, and a single visual system across every surface." />
+  <meta property="og:title" content="Designing a product from zero to launch — Yaroslav Kovalchuk" />
+  <meta property="og:description" content="Case study: designing the complete Quidget product from zero to launch — component system, design language, and a single visual system across every surface." />
   <meta property="og:image" content="https://yaroslav.design/Images/SEO.png" />
   <meta property="og:site_name" content="Yaroslav Kovalchuk" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Application UI — Yaroslav Kovalchuk" />
-  <meta name="twitter:description" content="Case study: building the Quidget application UI from scratch — component system, design language, and a single visual system across every surface." />
+  <meta name="twitter:title" content="Designing a product from zero to launch — Yaroslav Kovalchuk" />
+  <meta name="twitter:description" content="Case study: designing the complete Quidget product from zero to launch — component system, design language, and a single visual system across every surface." />
   <meta name="twitter:image" content="https://yaroslav.design/Images/SEO.png" />
-  <title>Application UI — Yaroslav Kovalchuk</title>
+  <title>Designing a product from zero to launch — Yaroslav Kovalchuk</title>
   <link rel="icon" type="image/png" href="Images/favicon.png" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -69,7 +69,7 @@
       </a>
       <p class="cs-eyebrow">Quidget &thinsp;·&thinsp; 2023–2025</p>
       <h1 class="cs-title">Designing a product<br /><em>from zero to launch</em></h1>
-      <p class="cs-intro">Designing the complete Quidget product — dashboard, AI configuration, testing, and channel management — as a single coherent system that makes running an AI agent feel effortless.</p>
+      <p class="cs-intro">Designing the complete Quidget product — dashboard, AI configuration, testing, and channel management — as a system that makes running an AI agent feel like less work than it actually is.</p>
       <div class="cs-meta">
         <div class="cs-meta-item">
           <p class="cs-meta-label">Role</p>
@@ -101,8 +101,8 @@
         <h2 class="cs-section-heading">The problem</h2>
       </div>
       <div class="cs-col-right">
-        <p>When you're building a B2B SaaS product from scratch, there's no existing UI to iterate on. No legacy patterns to work around. No inherited navigation structure. Every screen, every interaction, every component needs to be designed — and they all need to feel like they belong to the same product.</p>
-        <p>The challenge is that a product's complexity directly reflects its capability. A powerful AI chatbot platform needs to let users configure model behavior, manage knowledge sources, customize branding, test responses, and deploy to multiple channels. <em>Making this feel effortless without hiding capability</em> is the core design problem.</p>
+        <p>When you're building a B2B SaaS product from scratch, there's nothing to iterate on. No existing patterns, no inherited navigation, no legacy decisions to work around. Every screen needs to be designed — and they all need to feel like they came from the same place.</p>
+        <p>The harder constraint is that a powerful product can't pretend to be simple. A serious AI chatbot platform has to let users configure model behavior, manage knowledge sources, customize branding, test responses, and deploy to multiple channels. <em>The design problem is keeping all of that from feeling like a burden.</em></p>
       </div>
     </div>
   </section>
@@ -122,9 +122,9 @@
         <h2 class="cs-section-heading">The approach</h2>
       </div>
       <div class="cs-col-right">
-        <p>I designed the product as a single coherent system — not screen by screen, but as a design language applied consistently across every surface. Components were designed before screens. A shared library of inputs, cards, toggles, status indicators, and data displays was established first, then assembled into interfaces.</p>
-        <p>The navigation structure followed the user's mental model: set up your AI → train it → customize it → test it → deploy it. Each section of the product mapped directly to a step in that journey. Users arriving at any screen for the first time could orient themselves immediately — because the structure was intuitive, not inherited from engineering architecture.</p>
-        <p>This also meant that as new features were added across two years of development, <em>they felt native to the product rather than bolted on.</em> The system had enough flexibility to grow without breaking visual coherence.</p>
+        <p>I started with components, not screens. A shared library of inputs, cards, toggles, status indicators, and data displays came first — then those got assembled into interfaces. <em>That sequence matters.</em> Designing screens first produces inconsistency; designing the language first produces something that scales.</p>
+        <p>The navigation followed the user's actual workflow: set up your AI → train it → customize it → test it → deploy it. Each section of the product mapped to a step in that sequence. Someone arriving at any screen for the first time could orient themselves, because the structure came from how people work, not from how the codebase was organized.</p>
+        <p>That foundation also meant two years of new features landed without breaking what was already there. <em>The system had room to grow.</em></p>
       </div>
     </div>
   </section>
@@ -141,12 +141,12 @@
   <section class="cs-section">
     <div class="cs-section-inner">
       <div class="cs-col-left">
-        <h2 class="cs-section-heading">The challenge</h2>
+        <h2 class="cs-section-heading">The hard part</h2>
       </div>
       <div class="cs-col-right">
-        <p>The hardest problem in complex product design is progressive disclosure — deciding what's visible by default versus accessible on demand. Show too much and users feel overwhelmed. Hide too much and power users feel constrained. There's no universal answer, only a series of judgment calls informed by how different users approach the same task.</p>
-        <p>I solved this with consistent hierarchy: primary actions always immediately visible, secondary configuration accessible via tabs or expandable sections, advanced settings nested behind deliberate interaction. Users who wanted simplicity got simplicity. Users who needed control found it without hunting.</p>
-        <p>The other challenge was designing for context diversity. A law firm and a coffee shop both use the same product — completely different content, branding, conversation patterns, and goals. The interface needed to work well for both without feeling generic to either.</p>
+        <p>Progressive disclosure is where most complex products go wrong. Show too much and users feel lost. Hide too much and the power users start working around you. There's no formula — just a series of judgment calls about what different people need at different moments.</p>
+        <p>The answer I landed on: consistent hierarchy. Primary actions always visible. Secondary configuration behind tabs or expandable sections. Advanced settings a deliberate interaction away. Users who wanted to move fast could. Users who needed control found it without hunting.</p>
+        <p>The other constraint was context diversity. A law firm and a coffee shop both use the same product — different content, different branding, different expectations entirely. The interface had to work for both without feeling built for neither.</p>
       </div>
     </div>
   </section>
@@ -166,10 +166,10 @@
         <h2 class="cs-section-heading">Web Chat</h2>
       </div>
       <div class="cs-col-right">
-        <p>The most visible output of the platform was the widget itself — the thing that lived on customers' websites. Designing it meant solving a different kind of problem: making a third-party component feel like it belonged.</p>
-        <p>Most chat widgets look like widgets. They break immersion, signal "outsourced," reduce trust. I designed the Web Chat as a design system first — every visual property variable: colors, fonts, corner radius, avatar. The widget inherited brand identity from the agent setup flow automatically, so customers rarely had to configure how it looked.</p>
-        <p>The harder challenge was edge cases at infinite brand variation. A logo that looks great on white disappears on dark. An accent color chosen for fintech creates contrast problems for a children's education brand. I built in automatic light/dark switching based on background luminosity and capped saturation for accessibility — the system protected visual quality without requiring the business owner to understand any of it.</p>
-        <p><em>When the branding is right and the AI is on-point, users genuinely can't tell it's a third-party widget. That invisibility was the goal.</em></p>
+        <p>The widget was the most visible output of the platform — the thing that lived on customers' websites and talked to their users. Designing it was a different kind of problem: making a third-party component feel like it belonged on whatever site it sat on.</p>
+        <p>Most chat widgets look like widgets. They break the page, signal "outsourced," cost trust. I designed Web Chat as a design system where every visual property was a variable: colors, fonts, corner radius, avatar. The widget pulled brand identity from the agent setup flow automatically, so most customers never had to think about how it looked.</p>
+        <p>The edge cases were harder. A logo that reads clearly on white disappears on dark. An accent color chosen for a fintech company creates contrast problems on a children's education site. I built in automatic light/dark switching based on background luminosity and capped saturation for accessibility — the system made those calls so the business owner didn't have to know what luminosity meant.</p>
+        <p><em>When it works, users can't tell the widget is third-party. That was the target.</em></p>
       </div>
     </div>
   </section>
@@ -189,7 +189,7 @@
         <h2 class="cs-section-heading">Marketing site</h2>
       </div>
       <div class="cs-col-right">
-        <p>I also designed the marketing website — built on the same component system as the product, so the visual language stayed consistent from first impression to logged-in dashboard.</p>
+        <p>I also designed the marketing website, built on the same component system as the product. The visual language stayed consistent from the first page a visitor saw to the dashboard they logged into every day.</p>
       </div>
     </div>
   </section>
@@ -207,9 +207,8 @@
         <h2 class="cs-section-heading">The result</h2>
       </div>
       <div class="cs-col-right">
-        <p>Quidget launched, found customers, and kept growing — reaching thousands of businesses with the widget embedded across their websites.</p>
-        <p>The design outcome was a single visual system running through every surface a user ever touched: the marketing site that acquired them, the onboarding that activated them, the dashboard they returned to every day, and the widget their own customers talked to. One language, no seams.</p>
-        <p><em>The metric that mattered most was the one hardest to measure: zero mental energy spent on the interface. When the tool disappears and the work is all that's left — that's when it's working.</em></p>
+        <p>Quidget launched, found customers, and kept growing — thousands of businesses with the widget running on their sites.</p>
+        <p>One visual system ran through every surface a user touched: the marketing site, onboarding, the dashboard, and the widget their own customers talked to. No seams. <em>When the design does its job at that scale, nobody notices it. That's the point.</em></p>
       </div>
     </div>
   </section>

@@ -936,6 +936,7 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
   }
   body.nav-is-open .nav-link--active { opacity: 1; }
   body.nav-is-open .nav-link--arrow  { display: flex; }
+  body.nav-is-open .nav-link--resume { display: none; }
 
   /* Hero */
   .hero         { padding: 40px var(--pad) 48px; gap: 40px; }
