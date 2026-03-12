@@ -42,13 +42,13 @@
   padding: 4px 16px;
 }
 
-/* Eye by default; arrow for external; loader for WIP */
-.cursor-icon--arrow  { display: none; }
-.cursor-icon--loader { display: none; }
-.cursor--type-external .cursor-icon--eye    { display: none; }
-.cursor--type-external .cursor-icon--arrow  { display: flex; }
-.cursor--wip .cursor-icon--eye    { display: none; }
-.cursor--wip .cursor-icon--loader { display: flex; animation: spin 1.2s linear infinite; }
+/* Eye by default; arrow for external; hourglass for WIP */
+.cursor-icon--arrow     { display: none; }
+.cursor-icon--hourglass { display: none; }
+.cursor--type-external .cursor-icon--eye      { display: none; }
+.cursor--type-external .cursor-icon--arrow    { display: flex; }
+.cursor--wip .cursor-icon--eye      { display: none; }
+.cursor--wip .cursor-icon--hourglass { display: flex; }
 
 @keyframes spin {
   from { transform: rotate(0deg) scale(1); }

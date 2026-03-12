@@ -101,9 +101,9 @@ const isWip     = (slug: string) => csData[slug]?.wip ?? false;
               <img src="/Images/Other/Headway/Screens.webp" alt="Headway app screens" class="card-img" />
               <div class="card-wip-badge">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path stroke="white" stroke-width="1.5" stroke-linecap="round" d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                  <path stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5 3h14M5 21h14M7 3v3l5 5 5-5V3M7 21v-3l5-5 5 5v3"/>
                 </svg>
-                Case study in progress
+                In the works
               </div>
             </div>
             <div class="card-meta">
@@ -173,16 +173,20 @@ const isWip     = (slug: string) => csData[slug]?.wip ?? false;
     // Card expand cursor logic
     const cursorEl = document.getElementById('cursor');
     const cursorLabel = cursorEl?.querySelector('.cursor-label');
+    let leaveTimer: number | null = null;
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('mouseenter', () => {
+        if (leaveTimer !== null) { clearTimeout(leaveTimer); leaveTimer = null; }
         const isClassified = card.classList.contains('card--classified');
         cursorEl?.classList.add('cursor--expanded');
-        if (isClassified) cursorEl?.classList.add('cursor--wip');
-        if (cursorLabel) cursorLabel.textContent = isClassified ? 'Case study in progress' : 'View case study';
+        cursorEl?.classList.toggle('cursor--wip', isClassified);
+        if (cursorLabel) cursorLabel.textContent = isClassified ? 'In the works' : 'View case study';
       });
       card.addEventListener('mouseleave', () => {
-        cursorEl?.classList.remove('cursor--expanded', 'cursor--type-external', 'cursor--wip');
-        if (cursorLabel) cursorLabel.textContent = 'View case study';
+        leaveTimer = window.setTimeout(() => {
+          cursorEl?.classList.remove('cursor--expanded', 'cursor--type-external', 'cursor--wip');
+          leaveTimer = null;
+        }, 30);
       });
     });
 
