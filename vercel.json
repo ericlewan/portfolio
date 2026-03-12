@@ -1,4 +1,7 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
   "redirects": [
     { "source": "/index.html",                   "destination": "/",                    "permanent": true },
     { "source": "/about.html",                   "destination": "/about",               "permanent": true },
