@@ -173,7 +173,7 @@ const isWip     = (slug: string) => csData[slug]?.wip ?? false;
     // Card expand cursor logic
     const cursorEl = document.getElementById('cursor');
     const cursorLabel = cursorEl?.querySelector('.cursor-label');
-    let leaveTimer: number | null = null;
+    let leaveTimer = null;
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('mouseenter', () => {
         if (leaveTimer !== null) { clearTimeout(leaveTimer); leaveTimer = null; }
