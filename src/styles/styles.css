@@ -1022,13 +1022,17 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
   * { cursor: auto !important; }
   .cursor { display: none !important; }
 
-  /* Blur the WIP card image and show the badge */
+  /* Blur + badge — only when tapped */
   .card--classified .card-img {
+    transition: filter 0.25s ease, transform 0.25s ease;
+  }
+
+  .card--classified.is-tapped .card-img {
     filter: blur(4px);
     transform: scale(1.06);
   }
 
-  .card-wip-badge {
+  .card--classified.is-tapped .card-wip-badge {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1049,7 +1053,7 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
     z-index: 2;
   }
 
-  .card-wip-badge svg {
+  .card--classified.is-tapped .card-wip-badge svg {
     flex-shrink: 0;
     animation: spin 1.2s linear infinite;
   }

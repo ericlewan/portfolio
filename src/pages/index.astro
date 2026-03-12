@@ -154,6 +154,15 @@ const wip = Object.fromEntries(
   </section>
 
   <script slot="scripts">
+    // Tap-to-reveal WIP state on touch devices
+    document.querySelectorAll('.card--classified').forEach(card => {
+      card.addEventListener('click', () => {
+        const isActive = card.classList.contains('is-tapped');
+        document.querySelectorAll('.card--classified.is-tapped').forEach(c => c.classList.remove('is-tapped'));
+        if (!isActive) card.classList.add('is-tapped');
+      });
+    });
+
     // Card expand cursor logic
     const cursorEl = document.getElementById('cursor');
     const cursorLabel = cursorEl?.querySelector('.cursor-label');
