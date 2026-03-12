@@ -396,6 +396,9 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
 /* Classified card (case study in progress) */
 .card--classified { cursor: default; }
 .card--classified:hover .card-image { opacity: 1; }
+
+/* WIP badge — hidden on desktop, revealed on touch devices */
+.card-wip-badge { display: none; }
 .card-classified-inner {
   display: flex;
   flex-direction: column;
@@ -1018,6 +1021,38 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
 @media (hover: none) {
   * { cursor: auto !important; }
   .cursor { display: none !important; }
+
+  /* Blur the WIP card image and show the badge */
+  .card--classified .card-img {
+    filter: blur(4px);
+    transform: scale(1.06);
+  }
+
+  .card-wip-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 36px;
+    padding: 6px 16px;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  .card-wip-badge svg {
+    flex-shrink: 0;
+    animation: spin 1.2s linear infinite;
+  }
 }
 
 /* Tiny phones */
