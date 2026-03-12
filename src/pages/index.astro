@@ -1,5 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const caseStudies = await getCollection('case-studies');
+const wip = Object.fromEntries(
+  caseStudies.map(e => [e.id.replace(/\.(mdx|md)$/, ''), e.data.wip ?? false])
+);
 ---
 
 <BaseLayout
@@ -81,16 +87,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2 class="section-title">Selected projects</h2>
       <div class="project-grid">
 
-        <!-- Headway (classified) -->
-        <div class="card card--classified">
-          <div class="card-image card-image--headway">
-            <img src="/Images/Other/Headway/Screens.webp" alt="Headway app screens" class="card-img" />
+        <!-- Headway -->
+        {wip['headway'] ? (
+          <div class="card card--classified">
+            <div class="card-image card-image--headway">
+              <img src="/Images/Other/Headway/Screens.webp" alt="Headway app screens" class="card-img" />
+            </div>
+            <div class="card-meta">
+              <p class="card-title">Growth design at 55+ million users</p>
+              <p class="card-label">Headway &thinsp;·&thinsp; 2025 — Now</p>
+            </div>
           </div>
-          <div class="card-meta">
-            <p class="card-title">Growth design at 55+ million users</p>
-            <p class="card-label">Headway &thinsp;·&thinsp; 2025 — Now</p>
-          </div>
-        </div>
+        ) : (
+          <a class="card" href="/cs/headway">
+            <div class="card-image card-image--headway">
+              <img src="/Images/Other/Headway/Screens.webp" alt="Headway app screens" class="card-img" />
+            </div>
+            <div class="card-meta">
+              <p class="card-title">Growth design at 55+ million users</p>
+              <p class="card-label">Headway &thinsp;·&thinsp; 2025 — Now</p>
+            </div>
+          </a>
+        )}
 
         <!-- Quidget AI Agent -->
         <a class="card" href="/cs/quidget-ai-agent">

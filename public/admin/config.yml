@@ -35,5 +35,6 @@ collections:
       - { label: "Hero Background", name: "heroBg", widget: "select", options: ["pale", "dark", "headway", "blue", "dark-green"] }
       - { label: "Description (SEO)", name: "description", widget: "text" }
       - { label: "Copyright notice", name: "copyright", widget: "boolean", default: false }
+      - { label: "Work in progress (locks card on home page)", name: "wip", widget: "boolean", default: false }
       - { label: "Sort order", name: "order", widget: "number" }
       - { label: "Body", name: "body", widget: "markdown" }

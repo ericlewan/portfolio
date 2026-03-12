@@ -54,6 +54,17 @@
   to = "/cs/remoter"
   status = 301
 
+# Removed page → home
+[[redirects]]
+  from = "/resume-print.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/resume-print"
+  to = "/"
+  status = 301
+
 # Merged pages → the combined case study
 [[redirects]]
   from = "/cs-quidget-brand.html"
@@ -70,7 +81,3 @@
   to = "/cs/quidget-app"
   status = 301
 
-[[redirects]]
-  from = "/resume-print.html"
-  to = "/resume-print"
-  status = 301

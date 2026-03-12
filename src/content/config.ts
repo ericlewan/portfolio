@@ -15,6 +15,7 @@ const caseStudies = defineCollection({
     heroBg: z.string(),
     description: z.string(),
     copyright: z.boolean().default(false),
+    wip: z.boolean().default(false),
     nextProject: z.object({
       href: z.string(),
       title: z.string(),
