@@ -1,0 +1,16 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  bg?: string;
+  caption?: string;
+}
+const { src, alt, bg = 'pale', caption } = Astro.props;
+---
+
+<div class={`cs-image-block cs-image-block--${bg}`}>
+  <div class="cs-image-block-inner">
+    <img src={src} alt={alt} class="cs-img" />
+  </div>
+</div>
+{caption && <p class="cs-caption">{caption}</p>}

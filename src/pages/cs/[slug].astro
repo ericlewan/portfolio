@@ -1,0 +1,21 @@
+---
+import { getCollection, render } from 'astro:content';
+import CaseStudy from '../../layouts/CaseStudy.astro';
+import Section from '../../components/Section.astro';
+import ImageBlock from '../../components/ImageBlock.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('case-studies');
+  return entries.map(entry => ({
+    params: { slug: entry.id.replace(/\.(mdx|md)$/, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<CaseStudy {...entry.data}>
+  <Content components={{ Section, ImageBlock }} />
+</CaseStudy>

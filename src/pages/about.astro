@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+---
+
+<BaseLayout
+  title="About — Yaroslav Kovalchuk"
+  description="About Yaroslav Kovalchuk — a product designer with opinions on flows, copy, and anything slightly outside the job description. Been at it since 2016."
+  canonical="https://yaroslav.design/about"
+  activePage="about"
+>
+  <!-- HEADER -->
+  <header class="cs-header">
+    <div class="cs-header-inner">
+      <h1 class="hero-heading">Design, mostly.<br /><em>Opinions, always</em></h1>
+      <p class="hero-desc">Been doing this since 2016. Started with small freelance projects, ended up at startups and apps with tens of millions of users. Still enjoy it.</p>
+    </div>
+  </header>
+
+  <Section heading="The short version">
+    <p>Started freelancing in 2016 — small businesses, brand work, landing pages. In 2021 joined SupportYourApp as a UX/UI designer, first time working inside a real product team.</p>
+    <p>In 2023 joined Quidget as the founding designer. Built everything from scratch: brand, dashboard, onboarding, widget, marketing site.</p>
+    <p>Since 2025 I've been at Headway, working on conversion and growth for a book summary app with <em>55+ million users.</em></p>
+  </Section>
+
+  <Section heading="How I work">
+    <p>Before changing anything, I define the exact hypothesis: what am I testing, and how will I know if it worked? If the result doesn't tell me what caused it, the test was poorly designed — not just the outcome, the question itself.</p>
+    <p>I work closely with AI throughout — brainstorming, prototyping, gathering context, building. Not as a shortcut, but as a thinking partner that makes the gap between idea and testable thing much smaller.</p>
+    <p>I write the copy too. Not as a bonus — because if I can't write the words, I don't yet understand the problem.</p>
+  </Section>
+
+  <Section heading="Say hi">
+    <p>Based in Kyiv. Outside the work: film photography, PlayStation, and a probably-never-ending apartment decoration project. Always up for coffee or ramen.</p>
+    <p>
+      <a href="mailto:hello@yaroslav.design" class="footer-link">hello@yaroslav.design</a>&ensp;·&ensp;<a href="https://linkedin.com/in/yaroslavdesign" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>&ensp;·&ensp;<a href="https://t.me/yaroself" target="_blank" rel="noopener" class="footer-link">Telegram</a>
+    </p>
+  </Section>
+</BaseLayout>

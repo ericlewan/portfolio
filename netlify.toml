@@ -1,0 +1,76 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Old HTML URL → new clean URL (301 permanent redirects)
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/blog-figma-components.html"
+  to = "/blog/figma-components"
+  status = 301
+
+[[redirects]]
+  from = "/blog-ai-tools.html"
+  to = "/blog/ai-tools"
+  status = 301
+
+[[redirects]]
+  from = "/blog-onboarding.html"
+  to = "/blog/onboarding"
+  status = 301
+
+[[redirects]]
+  from = "/cs-headway.html"
+  to = "/cs/headway"
+  status = 301
+
+[[redirects]]
+  from = "/cs-quidget-ai-agent.html"
+  to = "/cs/quidget-ai-agent"
+  status = 301
+
+[[redirects]]
+  from = "/cs-quidget-app.html"
+  to = "/cs/quidget-app"
+  status = 301
+
+[[redirects]]
+  from = "/cs-remoter.html"
+  to = "/cs/remoter"
+  status = 301
+
+# Merged pages → the combined case study
+[[redirects]]
+  from = "/cs-quidget-brand.html"
+  to = "/cs/quidget-app"
+  status = 301
+
+[[redirects]]
+  from = "/cs-quidget-web-chat.html"
+  to = "/cs/quidget-app"
+  status = 301
+
+[[redirects]]
+  from = "/cs-quidget-website.html"
+  to = "/cs/quidget-app"
+  status = 301
+
+[[redirects]]
+  from = "/resume-print.html"
+  to = "/resume-print"
+  status = 301

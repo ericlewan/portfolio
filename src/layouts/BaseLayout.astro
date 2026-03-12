@@ -1,0 +1,114 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/styles.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogImage?: string;
+  activePage: 'work' | 'about' | 'writing';
+  isHome?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = 'https://yaroslav.design/Images/SEO.png',
+  activePage,
+  isHome = false,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- SEO -->
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="Yaroslav Kovalchuk" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <title>{title}</title>
+  <link rel="icon" type="image/png" href="/Images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600&family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <slot name="head" />
+</head>
+<body>
+
+  <Nav activePage={activePage} isHome={isHome} />
+
+  <slot />
+
+  <Footer />
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor">
+    <svg class="cursor-icon cursor-icon--eye" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.275 15.296C2.425 14.192 2 13.639 2 12c0-1.64.425-2.191 1.275-3.296C4.972 6.374 7.818 4 12 4c4.182 0 7.028 2.374 8.725 4.704C21.575 9.81 22 10.361 22 12c0 1.64-.425 2.192-1.275 3.296C19.028 17.626 16.182 20 12 20c-4.182 0-7.028-2.374-8.725-4.704Z"/>
+      <path stroke="white" stroke-width="1.5" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+    </svg>
+    <svg class="cursor-icon cursor-icon--loader" width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path stroke="white" stroke-width="1.5" stroke-linecap="round" d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+    </svg>
+    <svg class="cursor-icon cursor-icon--arrow" width="20" height="20" viewBox="0 0 24 24" fill="white">
+      <path d="M6.4 18L5 16.6L14.6 7H6V5h12v12h-2V8.4L6.4 18z"/>
+    </svg>
+    <span class="cursor-label">View case study</span>
+  </div>
+
+  <script>
+    const cursor = document.getElementById('cursor')!;
+    let mouseX = -100, mouseY = -100;
+    let curX = -100, curY = -100;
+
+    function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
+
+    function animate() {
+      curX = lerp(curX, mouseX, 0.20);
+      curY = lerp(curY, mouseY, 0.20);
+      cursor.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+    document.addEventListener('mouseleave', () => cursor.classList.add('cursor--hidden'));
+    document.addEventListener('mouseenter', () => cursor.classList.remove('cursor--hidden'));
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor--link'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--link'));
+    });
+
+    // Hamburger menu
+    const navToggle = document.getElementById('navToggle')!;
+    navToggle.addEventListener('click', () => document.body.classList.toggle('nav-is-open'));
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => document.body.classList.remove('nav-is-open'));
+    });
+  </script>
+
+  <slot name="scripts" />
+
+</body>
+</html>

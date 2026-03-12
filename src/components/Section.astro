@@ -1,0 +1,18 @@
+---
+interface Props {
+  heading: string;
+  noPaddingTop?: boolean;
+}
+const { heading, noPaddingTop = false } = Astro.props;
+---
+
+<section class="cs-section" style={noPaddingTop ? 'padding-top: 0;' : undefined}>
+  <div class="cs-section-inner">
+    <div class="cs-col-left">
+      <h2 class="cs-section-heading">{heading}</h2>
+    </div>
+    <div class="cs-col-right">
+      <slot />
+    </div>
+  </div>
+</section>

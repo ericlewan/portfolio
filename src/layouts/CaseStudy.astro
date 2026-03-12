@@ -1,0 +1,117 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface NextProject {
+  href: string;
+  title: string;
+}
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  company: string;
+  companyUrl?: string;
+  role: string;
+  timeline: string;
+  intro: string;
+  heroImage: string;
+  heroImageAlt: string;
+  heroBg: string;
+  description: string;
+  copyright?: boolean;
+  nextProject?: NextProject;
+}
+
+const {
+  title,
+  eyebrow,
+  company,
+  companyUrl,
+  role,
+  timeline,
+  intro,
+  heroImage,
+  heroImageAlt,
+  heroBg,
+  description,
+  copyright = false,
+  nextProject,
+} = Astro.props;
+
+const pageTitle = `${title.replace(/<[^>]+>/g, '')} — Yaroslav Kovalchuk`;
+const canonical = `https://yaroslav.design${Astro.url.pathname}`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  canonical={canonical}
+  activePage="work"
+>
+  <!-- HEADER -->
+  <header class="cs-header">
+    <div class="cs-header-inner">
+      <a href="/" class="cs-back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M11 7H3M3 7L6.5 3.5M3 7L6.5 10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Work
+      </a>
+      <p class="cs-eyebrow">{eyebrow}</p>
+      <h1 class="cs-title" set:html={title} />
+      <p class="cs-intro">{intro}</p>
+      <div class="cs-meta">
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Role</p>
+          <p class="cs-meta-value">{role}</p>
+        </div>
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Timeline</p>
+          <p class="cs-meta-value">{timeline}</p>
+        </div>
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Company</p>
+          <p class="cs-meta-value">
+            {companyUrl ? (
+              <a href={companyUrl} target="_blank" rel="noopener" class="cs-meta-link">{company} ↗</a>
+            ) : (
+              company
+            )}
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO IMAGE -->
+  <div class={`cs-image-block cs-image-block--${heroBg}`}>
+    <div class="cs-image-block-inner">
+      <img src={heroImage} alt={heroImageAlt} class="cs-img" />
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <slot />
+
+  <!-- COPYRIGHT -->
+  {copyright && (
+    <p style="text-align: center; padding: 20px var(--pad); font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); opacity: 0.25;">Work created for SupportYourApp, Inc. All rights reserved by SupportYourApp, Inc. Shared here for portfolio purposes.</p>
+  )}
+
+  <!-- NEXT PROJECT -->
+  {nextProject ? (
+    <div class="cs-next">
+      <a href={nextProject.href} class="cs-next-inner">
+        <p class="cs-next-label">Next project</p>
+        <p class="cs-next-title">{nextProject.title} <span class="cs-next-arrow">→</span></p>
+      </a>
+    </div>
+  ) : (
+    <div class="cs-next">
+      <a href="/" class="cs-next-inner">
+        <p class="cs-next-label">Back to work</p>
+        <p class="cs-next-title">See all projects <span class="cs-next-arrow">→</span></p>
+      </a>
+    </div>
+  )}
+</BaseLayout>

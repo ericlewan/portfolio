@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+function stripHtml(str: string): string {
+  return str.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+}
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr + 'T12:00:00Z');
+  return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+---
+
+<BaseLayout
+  title="Writing — Yaroslav Kovalchuk"
+  description="Notes on design, product, and the occasional strong opinion by Yaroslav Kovalchuk."
+  canonical="https://yaroslav.design/blog"
+  activePage="writing"
+>
+  <!-- HEADER -->
+  <header class="cs-header">
+    <div class="cs-header-inner">
+      <h1 class="hero-heading">Writing</h1>
+      <p class="hero-desc">Notes on design, product, and the occasional strong opinion</p>
+    </div>
+  </header>
+
+  <!-- POST LIST -->
+  <section class="blog">
+    <div class="blog-inner">
+      <div class="blog-list">
+        {posts.map(post => (
+          <a href={`/blog/${post.id.replace(/\.(mdx|md)$/, '')}`} class="blog-item">
+            <span class="blog-date">{formatDate(post.data.date)}</span>
+            <span class="blog-title">{stripHtml(post.data.title)}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

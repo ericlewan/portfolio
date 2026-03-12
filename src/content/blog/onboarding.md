@@ -1,0 +1,35 @@
+---
+title: "The one thing about onboarding<br /><em>nobody documents</em>"
+date: "2024-10-01"
+description: "What user research actually reveals about first-run experiences — the thing that matters most and almost never gets written down."
+---
+
+Everyone documents the steps. Almost nobody documents the goal.
+
+Ask a team what their onboarding is trying to do and you'll get something like: "teach users how to use the product." That sounds right. It's usually wrong.
+
+---
+
+## What onboarding is actually for
+
+Onboarding isn't education. It's a race.
+
+You're racing to the moment where the product delivers its core value — before the user loses patience and leaves. Everything before that moment is overhead. Necessary overhead, sometimes. But overhead.
+
+When I redesigned the onboarding flow at Quidget, the original version had seven steps before you could see a working chat widget on your site. We thought they were all necessary. Setup, customization, AI training, colors, greeting message...
+
+None of it was necessary. What users needed was to see the thing work. We got it to two steps. Enter your URL. See your widget. Everything else moved to after the aha moment.
+
+## The thing nobody writes down
+
+The goal — the specific moment of value you're racing to — almost never makes it into a PRD, a brief, or a spec. It lives in someone's head. Sometimes the founder's. Sometimes nobody's.
+
+This creates a problem: designers end up optimizing each step individually without a clear sense of what success looks like. You make the copy cleaner. You reduce friction in the form. You add a progress bar. All fine. But if you're optimizing steps toward the wrong destination, you're just polishing a path that leads nowhere useful.
+
+## What I'd add to every onboarding brief
+
+One sentence: *"This onboarding is successful when the user experiences [specific thing] for the first time."*
+
+Not "completes setup." Not "understands the product." The specific thing. For Quidget it was: a fully functional, branded chat widget appearing on their actual website. For Headway it's: reading the first key insight from a book and feeling like they actually got something.
+
+Write that down first. Design backwards from it.

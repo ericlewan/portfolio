@@ -4,6 +4,11 @@
 # Claude internal
 .claude/
 
-# Non-website files
-*.md
-*.tsx
+# Astro
+node_modules/
+dist/
+.astro/
+
+# Root-level personal documents (not part of the site)
+/*.md
+/*.tsx
