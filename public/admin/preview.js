@@ -1,6 +1,13 @@
 (function () {
+  // ─── Always register styles (independent of React) ───────────
+  CMS.registerPreviewStyle(
+    'https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600' +
+    '&family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap'
+  );
+  CMS.registerPreviewStyle('/admin/preview.css');
+
   if (!window.React) {
-    console.error('[preview.js] React is not available globally. Custom previews will not load.');
+    console.warn('[preview.js] React is not available globally. Custom preview templates will not load.');
     return;
   }
   var h = React.createElement;
@@ -112,13 +119,7 @@
     );
   };
 
-  // ─── Register templates & styles ─────────────────────────────
+  // ─── Register templates ───────────────────────────────────────
   CMS.registerPreviewTemplate('blog', BlogPreview);
   CMS.registerPreviewTemplate('case-studies', CaseStudyPreview);
-
-  CMS.registerPreviewStyle(
-    'https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600' +
-    '&family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap'
-  );
-  CMS.registerPreviewStyle('/admin/preview.css');
 })();
