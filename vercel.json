@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    { "source": "/index.html",                   "destination": "/",                    "permanent": true },
+    { "source": "/about.html",                   "destination": "/about",               "permanent": true },
+    { "source": "/blog.html",                    "destination": "/blog",                "permanent": true },
+    { "source": "/blog-figma-components.html",   "destination": "/blog/figma-components","permanent": true },
+    { "source": "/blog-ai-tools.html",           "destination": "/blog/ai-tools",       "permanent": true },
+    { "source": "/blog-onboarding.html",         "destination": "/blog/onboarding",     "permanent": true },
+    { "source": "/cs-headway.html",              "destination": "/cs/headway",          "permanent": true },
+    { "source": "/cs-quidget-ai-agent.html",     "destination": "/cs/quidget-ai-agent", "permanent": true },
+    { "source": "/cs-quidget-app.html",          "destination": "/cs/quidget-app",      "permanent": true },
+    { "source": "/cs-remoter.html",              "destination": "/cs/remoter",          "permanent": true },
+    { "source": "/resume-print.html",            "destination": "/",                    "permanent": true },
+    { "source": "/resume-print",                 "destination": "/",                    "permanent": true },
+    { "source": "/cs-quidget-brand.html",        "destination": "/cs/quidget-app",      "permanent": true },
+    { "source": "/cs-quidget-web-chat.html",     "destination": "/cs/quidget-app",      "permanent": true },
+    { "source": "/cs-quidget-website.html",      "destination": "/cs/quidget-app",      "permanent": true }
+  ]
+}
