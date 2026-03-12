@@ -11,7 +11,7 @@ collections:
     folder: "src/content/blog"
     create: true
     extension: "md"
-    summary: "{{title}} — {{date}}"
+    summary: "{{date}} — {{description}}"
     preview_path: "blog/{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "HTML allowed, e.g. First part<br /><em>italic part</em>" }
@@ -25,7 +25,7 @@ collections:
     create: true
     extension: "mdx"
     format: "frontmatter"
-    summary: "{{title}} ({{eyebrow}})"
+    summary: "{{company}} — {{timeline}}"
     preview_path: "cs/{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "HTML allowed, e.g. Title<br /><em>subtitle</em>" }
