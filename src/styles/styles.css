@@ -514,6 +514,22 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
 /* About / Writing page headings use hero scale, not case-study scale */
 .cs-header .hero-heading { font-size: 56px; margin-bottom: 24px; }
 
+/* WIP case study page */
+.cs-wip {
+  max-width: 720px;
+  padding: 52px 40px 120px;
+}
+
+.cs-wip-notice {
+  font-family: 'Geist Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.35;
+  margin-top: 40px;
+}
+
 .cs-back {
   display: inline-flex;
   align-items: center;

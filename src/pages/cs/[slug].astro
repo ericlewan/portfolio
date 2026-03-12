@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import CaseStudy from '../../layouts/CaseStudy.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/Section.astro';
 import ImageBlock from '../../components/ImageBlock.astro';
 
@@ -14,8 +15,27 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const { title, eyebrow, description, wip } = entry.data;
+
+// Plain-text title for <title> tag
+const plainTitle = title.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').trim();
 ---
 
-<CaseStudy {...entry.data}>
-  <Content components={{ Section, ImageBlock }} />
-</CaseStudy>
+{wip ? (
+  <BaseLayout
+    title={`${plainTitle} — Yaroslav Kovalchuk`}
+    description={description}
+    activePage="work"
+  >
+    <div class="cs-wip">
+      <a href="/" class="cs-back">← Work</a>
+      <p class="cs-eyebrow">{eyebrow}</p>
+      <h1 class="cs-title" set:html={title} />
+      <p class="cs-wip-notice">Case study in progress</p>
+    </div>
+  </BaseLayout>
+) : (
+  <CaseStudy {...entry.data}>
+    <Content components={{ Section, ImageBlock }} />
+  </CaseStudy>
+)}
