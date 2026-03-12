@@ -22,6 +22,7 @@ collections:
     folder: "src/content/case-studies"
     create: true
     extension: "mdx"
+    format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "HTML allowed, e.g. Title<br /><em>subtitle</em>" }
       - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "e.g. Quidget · 2024" }
