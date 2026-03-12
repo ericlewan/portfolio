@@ -11,6 +11,8 @@ collections:
     folder: "src/content/blog"
     create: true
     extension: "md"
+    summary: "{{title}} — {{date}}"
+    preview_path: "blog/{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "HTML allowed, e.g. First part<br /><em>italic part</em>" }
       - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
@@ -23,6 +25,8 @@ collections:
     create: true
     extension: "mdx"
     format: "frontmatter"
+    summary: "{{title}} ({{eyebrow}})"
+    preview_path: "cs/{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "HTML allowed, e.g. Title<br /><em>subtitle</em>" }
       - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "e.g. Quidget · 2024" }
