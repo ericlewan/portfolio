@@ -1,4 +1,8 @@
 (function () {
+  if (!window.React) {
+    console.error('[preview.js] React is not available globally. Custom previews will not load.');
+    return;
+  }
   var h = React.createElement;
 
   // ─── Helpers ─────────────────────────────────────────────────

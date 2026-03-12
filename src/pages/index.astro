@@ -7,9 +7,9 @@ const csData = Object.fromEntries(
   caseStudies.map(e => [e.id.replace(/\.(mdx|md)$/, ''), e.data])
 );
 
-// Strip <br /> for card titles so they flow as a single line
+// Strip all HTML tags for card titles — italic/breaks only apply on the article page
 const cardTitle = (slug: string) =>
-  (csData[slug]?.title ?? '').replace(/<br\s*\/?>/gi, ' ');
+  (csData[slug]?.title ?? '').replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').trim();
 const cardLabel = (slug: string) => csData[slug]?.eyebrow ?? '';
 const isWip     = (slug: string) => csData[slug]?.wip ?? false;
 ---
@@ -106,7 +106,7 @@ const isWip     = (slug: string) => csData[slug]?.wip ?? false;
               </div>
             </div>
             <div class="card-meta">
-              <p class="card-title" set:html={cardTitle('headway')} />
+              <p class="card-title" set:text={cardTitle('headway')} />
               <p class="card-label">{cardLabel('headway')}</p>
             </div>
           </div>
@@ -116,7 +116,7 @@ const isWip     = (slug: string) => csData[slug]?.wip ?? false;
               <img src="/Images/Other/Headway/Screens.webp" alt="Headway app screens" class="card-img" />
             </div>
             <div class="card-meta">
-              <p class="card-title" set:html={cardTitle('headway')} />
+              <p class="card-title" set:text={cardTitle('headway')} />
               <p class="card-label">{cardLabel('headway')}</p>
             </div>
           </a>
@@ -128,7 +128,7 @@ const isWip     = (slug: string) => csData[slug]?.wip ?? false;
             <img src="/Images/AI Agent at Quidget/b908c25d-19e5-4164-a98c-e2beb0c42983.webp" alt="Quidget AI Agent onboarding" class="card-img" />
           </div>
           <div class="card-meta">
-            <p class="card-title" set:html={cardTitle('quidget-ai-agent')} />
+            <p class="card-title" set:text={cardTitle('quidget-ai-agent')} />
             <p class="card-label">{cardLabel('quidget-ai-agent')}</p>
           </div>
         </a>
@@ -139,7 +139,7 @@ const isWip     = (slug: string) => csData[slug]?.wip ?? false;
             <img src="/Images/Application UI & UX at Quidget/12b3146c-3230-49f4-9248-e0ef0e878bff.webp" alt="Quidget Application UI" class="card-img" />
           </div>
           <div class="card-meta">
-            <p class="card-title" set:html={cardTitle('quidget-app')} />
+            <p class="card-title" set:text={cardTitle('quidget-app')} />
             <p class="card-label">{cardLabel('quidget-app')}</p>
           </div>
         </a>
@@ -150,7 +150,7 @@ const isWip     = (slug: string) => csData[slug]?.wip ?? false;
             <img src="/Images/Website at Remoter.me/93cc111a-a10f-43e4-92d1-501ee5e0f5c6.webp" alt="Remoter.me landing page" class="card-img" />
           </div>
           <div class="card-meta">
-            <p class="card-title" set:html={cardTitle('remoter')} />
+            <p class="card-title" set:text={cardTitle('remoter')} />
             <p class="card-label">{cardLabel('remoter')}</p>
           </div>
         </a>

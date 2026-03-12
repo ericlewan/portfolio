@@ -5,36 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- React must be loaded before Decap CMS for custom preview templates to work -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <style>
-      /* ── Admin chrome improvements ──────────────────────────── */
-      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap');
-
-      :root {
-        --cms-accent: #FF5500;
-      }
-
-      /* Base font */
       body, input, textarea, select, button {
         font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
-
-      /* Tighten up the loading screen */
-      #nc-root {
-        font-family: 'Geist', sans-serif;
-      }
-
-      /* Primary action buttons → accent orange */
-      button[class*="success"],
-      button[class*="primary"] {
-        background-color: var(--cms-accent) !important;
-        border-color: var(--cms-accent) !important;
-      }
-
-      /* Make the preview pane fill the frame cleanly */
-      iframe {
-        border: none;
-      }
+      iframe { border: none; }
     </style>
   </head>
   <body>
