@@ -9,4 +9,9 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [mdx(), react(), keystatic()],
   site: 'https://yaroslav.design',
+  security: {
+    allowedDomains: [
+      { hostname: 'yaroslav.design', protocol: 'https' },
+    ],
+  },
 });
