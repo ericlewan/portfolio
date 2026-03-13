@@ -16,11 +16,14 @@ export const ALL: APIRoute = async (context) => {
     request = new Request(fixedUrl.toString(), context.request);
   }
 
-  // Build the generic handler the same way @keystatic/astro does internally,
-  // but call it with our URL-fixed request instead of context.request.
+  // Build the generic handler the same way @keystatic/astro does internally.
+  // The injected route calls makeHandler({ config }), which then spreads to
+  // makeGenericAPIRouteHandler({ config, clientId, ... }).
+  // We must pass { config } (wrapped), NOT { ...config } (spread), so that
+  // _config.config resolves to the keystatic config object.
   const handler = makeGenericAPIRouteHandler(
     {
-      ...config,
+      config,
       clientId: import.meta.env.KEYSTATIC_GITHUB_CLIENT_ID,
       clientSecret: import.meta.env.KEYSTATIC_GITHUB_CLIENT_SECRET,
       secret: import.meta.env.KEYSTATIC_SECRET,
