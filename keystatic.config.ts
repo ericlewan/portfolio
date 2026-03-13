@@ -69,6 +69,7 @@ export default config({
               schema: {
                 heading: fields.text({ label: 'Heading' }),
                 noPaddingTop: fields.checkbox({ label: 'No top padding', defaultValue: false }),
+                children: fields.child({ kind: 'block', placeholder: 'Content…' }),
               },
             }),
             ImageBlock: component({
