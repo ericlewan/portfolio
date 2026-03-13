@@ -1,4 +1,4 @@
-import { config, collection, fields } from '@keystatic/core';
+import { config, collection, fields, component } from '@keystatic/core';
 
 const isProd = import.meta.env.PROD;
 
@@ -16,7 +16,8 @@ export default config({
       label: 'Blog Posts',
       slugField: 'title',
       path: 'src/content/blog/*',
-      format: { contentField: 'body' },
+      // Blog posts are .md files, not .mdx — must specify extension
+      format: { contentField: 'body', extension: 'md' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         date: fields.date({ label: 'Date' }),
@@ -60,7 +61,35 @@ export default config({
         wip: fields.checkbox({ label: 'Work in progress (locks card on home page)', defaultValue: false }),
         order: fields.integer({ label: 'Sort order' }),
         nextProject: fields.ignored(),
-        body: fields.mdx({ label: 'Body' }),
+        body: fields.mdx({
+          label: 'Body',
+          components: {
+            Section: component({
+              label: 'Section',
+              schema: {
+                heading: fields.text({ label: 'Heading' }),
+                noPaddingTop: fields.checkbox({ label: 'No top padding', defaultValue: false }),
+              },
+            }),
+            ImageBlock: component({
+              label: 'Image Block',
+              schema: {
+                src: fields.text({ label: 'Image path' }),
+                alt: fields.text({ label: 'Alt text' }),
+                bg: fields.select({
+                  label: 'Background',
+                  options: [
+                    { label: 'Pale', value: 'pale' },
+                    { label: 'Blue', value: 'blue' },
+                    { label: 'Dark', value: 'dark' },
+                  ],
+                  defaultValue: 'pale',
+                }),
+                caption: fields.text({ label: 'Caption', multiline: true }),
+              },
+            }),
+          },
+        }),
       },
     }),
   },
