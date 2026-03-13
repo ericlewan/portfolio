@@ -1,4 +1,5 @@
-import { config, collection, fields, component } from '@keystatic/core';
+import { config, collection, fields } from '@keystatic/core';
+import { wrapper, block } from '@keystatic/core/content-components';
 
 const isProd = import.meta.env.PROD;
 
@@ -64,21 +65,20 @@ export default config({
         body: fields.mdx({
           label: 'Body',
           components: {
-            Section: component({
+            // wrapper() produces kind:'wrapper' — Keystatic uses this to correctly
+            // register the ProseMirror node type for a block that wraps child content.
+            // The old component() API didn't set kind, causing the createAndFill crash.
+            // Child content (the text between tags) is implicit in wrapper — no fields.child() needed.
+            Section: wrapper({
               label: 'Section',
-              // preview is required by Keystatic to initialise the ProseMirror schema.
-              // Returning the children element renders block content inline.
-              preview: (props) => props.fields.children.element,
               schema: {
                 heading: fields.text({ label: 'Heading' }),
                 noPaddingTop: fields.checkbox({ label: 'No top padding', defaultValue: false }),
-                children: fields.child({ kind: 'block', placeholder: 'Content…' }),
               },
             }),
-            ImageBlock: component({
+            // block() produces kind:'block' — for self-closing block elements with no children
+            ImageBlock: block({
               label: 'Image Block',
-              // preview is required; null is valid (no interactive preview in editor)
-              preview: () => null,
               schema: {
                 src: fields.text({ label: 'Image path' }),
                 alt: fields.text({ label: 'Alt text' }),
