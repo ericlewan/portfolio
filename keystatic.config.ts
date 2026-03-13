@@ -66,6 +66,9 @@ export default config({
           components: {
             Section: component({
               label: 'Section',
+              // preview is required by Keystatic to initialise the ProseMirror schema.
+              // Returning the children element renders block content inline.
+              preview: (props) => props.fields.children.element,
               schema: {
                 heading: fields.text({ label: 'Heading' }),
                 noPaddingTop: fields.checkbox({ label: 'No top padding', defaultValue: false }),
@@ -74,6 +77,8 @@ export default config({
             }),
             ImageBlock: component({
               label: 'Image Block',
+              // preview is required; null is valid (no interactive preview in editor)
+              preview: () => null,
               schema: {
                 src: fields.text({ label: 'Image path' }),
                 alt: fields.text({ label: 'Alt text' }),
