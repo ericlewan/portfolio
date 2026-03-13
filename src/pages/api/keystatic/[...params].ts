@@ -1,10 +1,8 @@
-import { makeHandler } from '@keystatic/astro/api';
+import { makeGenericAPIRouteHandler } from '@keystatic/core/api/generic';
 import config from '../../../../keystatic.config';
-import type { APIContext } from 'astro';
+import type { APIRoute } from 'astro';
 
-const handler = makeHandler(config);
-
-export const ALL = async (context: APIContext) => {
+export const ALL: APIRoute = async (context) => {
   // On Vercel, context.request.url may have 'localhost' as the origin
   // because the serverless function doesn't see the public hostname.
   // We rewrite the URL to use the canonical site origin before
@@ -18,5 +16,18 @@ export const ALL = async (context: APIContext) => {
     request = new Request(fixedUrl.toString(), context.request);
   }
 
-  return handler({ ...context, request });
+  // Build the generic handler the same way @keystatic/astro does internally,
+  // but call it with our URL-fixed request instead of context.request.
+  const handler = makeGenericAPIRouteHandler(
+    {
+      ...config,
+      clientId: import.meta.env.KEYSTATIC_GITHUB_CLIENT_ID,
+      clientSecret: import.meta.env.KEYSTATIC_GITHUB_CLIENT_SECRET,
+      secret: import.meta.env.KEYSTATIC_SECRET,
+    },
+    { slugEnvName: 'PUBLIC_KEYSTATIC_GITHUB_APP_SLUG' },
+  );
+
+  const { body, headers, status } = await handler(request);
+  return new Response(body, { status, headers });
 };
