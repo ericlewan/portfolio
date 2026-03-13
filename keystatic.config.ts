@@ -59,6 +59,13 @@ export default config({
         copyright: fields.checkbox({ label: 'Copyright notice', defaultValue: false }),
         wip: fields.checkbox({ label: 'Work in progress (locks card on home page)', defaultValue: false }),
         order: fields.integer({ label: 'Sort order' }),
+        nextProject: fields.object({
+          label: 'Next Project',
+          fields: {
+            href: fields.text({ label: 'URL (e.g. /cs/headway)' }),
+            title: fields.text({ label: 'Title' }),
+          },
+        }),
         body: fields.mdx({ label: 'Body' }),
       },
     }),
