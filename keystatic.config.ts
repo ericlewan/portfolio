@@ -17,8 +17,7 @@ export default config({
       label: 'Blog Posts',
       slugField: 'slug',
       path: 'src/content/blog/*',
-      // Blog posts are .md files, not .mdx — must specify extension
-      format: { contentField: 'body', extension: 'md' },
+      format: { contentField: 'body' },
       schema: {
         slug: fields.slug({ name: { label: 'Slug' } }),
         title: fields.text({ label: 'Title', description: 'HTML allowed, e.g. Title<br /><em>italic</em>' }),
