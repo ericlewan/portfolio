@@ -4,15 +4,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const caseStudies = await getCollection('case-studies');
-const csData = Object.fromEntries(
-  caseStudies.map(e => [e.id.replace(/\.(mdx|md)$/, ''), e.data])
-);
+const sortedStudies = caseStudies.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 
-// Strip all HTML tags for card titles — italic/breaks only apply on the article page
-const cardTitle = (slug: string) =>
-  (csData[slug]?.title ?? '').replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').trim();
-const cardLabel = (slug: string) => csData[slug]?.eyebrow ?? '';
-const isWip     = (slug: string) => csData[slug]?.wip ?? false;
+const stripHtml = (s: string) => s.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').trim();
 ---
 
 <BaseLayout
@@ -94,67 +88,39 @@ const isWip     = (slug: string) => csData[slug]?.wip ?? false;
       <h2 class="section-title">Selected projects</h2>
       <div class="project-grid">
 
-        <!-- Headway -->
-        {isWip('headway') ? (
-          <div class="card card--classified">
-            <div class="card-image card-image--headway">
-              <img src="/Images/Other/Headway/Screens.webp" alt="Headway app screens" class="card-img" />
-              <div class="card-wip-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5 3h14M5 21h14M7 3v3l5 5 5-5V3M7 21v-3l5-5 5 5v3"/>
-                </svg>
-                In the works
+        {sortedStudies.map(entry => {
+          const slug = entry.id.replace(/\.(mdx|md)$/, '');
+          const { title, eyebrow, wip, cardImage, cardImageAlt, cardBg } = entry.data;
+          const cleanTitle = stripHtml(title);
+          const bg = cardBg || 'light';
+          return wip ? (
+            <div class="card card--classified">
+              <div class={`card-image card-image--${bg}`}>
+                {cardImage && <img src={cardImage} alt={cardImageAlt} class="card-img" />}
+                <div class="card-wip-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5 3h14M5 21h14M7 3v3l5 5 5-5V3M7 21v-3l5-5 5 5v3"/>
+                  </svg>
+                  In the works
+                </div>
+              </div>
+              <div class="card-meta">
+                <p class="card-title" set:text={cleanTitle} />
+                <p class="card-label">{eyebrow}</p>
               </div>
             </div>
-            <div class="card-meta">
-              <p class="card-title" set:text={cardTitle('headway')} />
-              <p class="card-label">{cardLabel('headway')}</p>
-            </div>
-          </div>
-        ) : (
-          <a class="card" href="/cs/headway">
-            <div class="card-image card-image--headway">
-              <img src="/Images/Other/Headway/Screens.webp" alt="Headway app screens" class="card-img" />
-            </div>
-            <div class="card-meta">
-              <p class="card-title" set:text={cardTitle('headway')} />
-              <p class="card-label">{cardLabel('headway')}</p>
-            </div>
-          </a>
-        )}
-
-        <!-- Quidget AI Agent -->
-        <a class="card" href="/cs/quidget-ai-agent">
-          <div class="card-image card-image--light">
-            <img src="/Images/AI Agent at Quidget/b908c25d-19e5-4164-a98c-e2beb0c42983.webp" alt="Quidget AI Agent onboarding" class="card-img" />
-          </div>
-          <div class="card-meta">
-            <p class="card-title" set:text={cardTitle('quidget-ai-agent')} />
-            <p class="card-label">{cardLabel('quidget-ai-agent')}</p>
-          </div>
-        </a>
-
-        <!-- Quidget App -->
-        <a class="card" href="/cs/quidget-app">
-          <div class="card-image card-image--light">
-            <img src="/Images/Application UI & UX at Quidget/12b3146c-3230-49f4-9248-e0ef0e878bff.webp" alt="Quidget Application UI" class="card-img" />
-          </div>
-          <div class="card-meta">
-            <p class="card-title" set:text={cardTitle('quidget-app')} />
-            <p class="card-label">{cardLabel('quidget-app')}</p>
-          </div>
-        </a>
-
-        <!-- Remoter.me -->
-        <a class="card" href="/cs/remoter">
-          <div class="card-image card-image--dark-green">
-            <img src="/Images/Website at Remoter.me/93cc111a-a10f-43e4-92d1-501ee5e0f5c6.webp" alt="Remoter.me landing page" class="card-img" />
-          </div>
-          <div class="card-meta">
-            <p class="card-title" set:text={cardTitle('remoter')} />
-            <p class="card-label">{cardLabel('remoter')}</p>
-          </div>
-        </a>
+          ) : (
+            <a class="card" href={`/cs/${slug}`}>
+              <div class={`card-image card-image--${bg}`}>
+                {cardImage && <img src={cardImage} alt={cardImageAlt} class="card-img" />}
+              </div>
+              <div class="card-meta">
+                <p class="card-title" set:text={cleanTitle} />
+                <p class="card-label">{eyebrow}</p>
+              </div>
+            </a>
+          );
+        })}
 
       </div>
     </div>

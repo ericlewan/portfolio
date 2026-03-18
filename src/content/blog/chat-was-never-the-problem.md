@@ -1,4 +1,5 @@
 ---
+slug: Chat was never the problem
 title: "Chat was never the problem.<br /><em>The output was.</em>"
 date: "2026-03-18"
 description: "For years the assumption was that chat is a temporary interface for AI. I think chat was fine. The problem was always what came back from it."

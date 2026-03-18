@@ -15,12 +15,13 @@ export default config({
   collections: {
     blog: collection({
       label: 'Blog Posts',
-      slugField: 'title',
+      slugField: 'slug',
       path: 'src/content/blog/*',
       // Blog posts are .md files, not .mdx — must specify extension
       format: { contentField: 'body', extension: 'md' },
       schema: {
-        title: fields.slug({ name: { label: 'Title' } }),
+        slug: fields.slug({ name: { label: 'Slug' } }),
+        title: fields.text({ label: 'Title', description: 'HTML allowed, e.g. Title<br /><em>italic</em>' }),
         date: fields.date({ label: 'Date' }),
         description: fields.text({ label: 'Description' }),
         body: fields.mdx({ label: 'Body' }),
@@ -53,6 +54,19 @@ export default config({
             { label: 'Dark Green', value: 'dark-green' },
           ],
           defaultValue: 'pale',
+        }),
+        cardImage: fields.text({ label: 'Card Image (home page)' }),
+        cardImageAlt: fields.text({ label: 'Card Image Alt' }),
+        cardBg: fields.select({
+          label: 'Card Background (home page)',
+          options: [
+            { label: 'Light', value: 'light' },
+            { label: 'Headway', value: 'headway' },
+            { label: 'Blue', value: 'blue' },
+            { label: 'Dark', value: 'dark' },
+            { label: 'Dark Green', value: 'dark-green' },
+          ],
+          defaultValue: 'light',
         }),
         description: fields.text({ label: 'Description (SEO)', multiline: true }),
         copyright: fields.checkbox({ label: 'Copyright notice', defaultValue: false }),
