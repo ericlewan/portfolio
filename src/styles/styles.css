@@ -852,6 +852,12 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
   font-weight: 500;
 }
 
+.post-body img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 .post-divider,
 .post-body hr {
   border: none;
