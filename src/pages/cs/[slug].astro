@@ -5,6 +5,7 @@ import CaseStudy from '../../layouts/CaseStudy.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/Section.astro';
 import ImageBlock from '../../components/ImageBlock.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('case-studies');
@@ -37,6 +38,6 @@ const plainTitle = title.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').tr
   </BaseLayout>
 ) : (
   <CaseStudy {...entry.data}>
-    <Content components={{ Section, ImageBlock }} />
+    <Content components={{ Section, ImageBlock, VideoEmbed }} />
   </CaseStudy>
 )}

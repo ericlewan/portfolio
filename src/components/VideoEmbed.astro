@@ -1,0 +1,87 @@
+---
+interface Props {
+  videoId: string;
+  thumbnail?: string;
+}
+const { videoId, thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` } = Astro.props;
+---
+
+<div class="yt-wrapper">
+  <div class="yt-facade" data-video-id={videoId}>
+    <img src={thumbnail} alt="" class="yt-thumb" />
+    <div class="yt-overlay">
+      <div class="yt-btn">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="4,2 4,16 16,9" fill="currentColor" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .yt-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+  }
+  .yt-facade {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .yt-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .yt-facade:hover .yt-thumb {
+    transform: scale(1.02);
+  }
+  .yt-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(48, 55, 78, 0.18);
+    transition: background 0.2s ease;
+  }
+  .yt-facade:hover .yt-overlay {
+    background: rgba(48, 55, 78, 0.28);
+  }
+  .yt-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fff;
+    color: #30374E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 24px rgba(48, 55, 78, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding-left: 3px; /* optical center for triangle */
+  }
+  .yt-facade:hover .yt-btn {
+    transform: scale(1.1);
+    box-shadow: 0 4px 32px rgba(48, 55, 78, 0.32);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.yt-facade').forEach(facade => {
+    facade.addEventListener('click', function () {
+      const videoId = this.dataset.videoId;
+      const wrapper = this.parentElement!;
+      wrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" allow="autoplay;encrypted-media;picture-in-picture" allowfullscreen></iframe>`;
+    });
+  });
+</script>
