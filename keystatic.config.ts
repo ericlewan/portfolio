@@ -5,7 +5,7 @@ const isProd = import.meta.env.PROD;
 
 export default config({
   storage: isProd
-    ? { kind: 'github', repo: 'ericlewan/portfolio' }
+    ? { kind: 'github', repo: 'ericlewan/portfolio', branch: 'main' }
     : { kind: 'local' },
 
   ui: {
@@ -31,7 +31,7 @@ export default config({
       label: 'Case Studies',
       slugField: 'company',
       path: 'src/content/case-studies/*',
-      format: { contentField: 'body' },
+      format: { contentField: 'body', extension: 'mdx' },
       schema: {
         title: fields.text({ label: 'Title', description: 'HTML allowed, e.g. First part<br /><em>italic part</em>' }),
         eyebrow: fields.text({ label: 'Eyebrow', description: 'e.g. Quidget · 2024' }),
