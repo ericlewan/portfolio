@@ -29,22 +29,19 @@ export default config({
 
     'case-studies': collection({
       label: 'Case Studies',
-      slugField: 'company',
+      slugField: 'slug',
       path: 'src/content/case-studies/*',
       format: { contentField: 'body', extension: 'mdx' },
       schema: {
+        slug: fields.slug({ name: { label: 'Slug' } }),
         title: fields.text({ label: 'Title', description: 'HTML allowed, e.g. First part<br /><em>italic part</em>' }),
         eyebrow: fields.text({ label: 'Eyebrow', description: 'e.g. Quidget · 2024' }),
-        company: fields.slug({ name: { label: 'Company' } }),
+        company: fields.text({ label: 'Company' }),
         companyUrl: fields.url({ label: 'Company URL', validation: { isRequired: false } }),
         role: fields.text({ label: 'Role' }),
         timeline: fields.text({ label: 'Timeline' }),
         intro: fields.text({ label: 'Intro', multiline: true }),
-        heroImage: fields.image({
-          label: 'Hero Image',
-          directory: 'public/Images/uploads',
-          publicPath: '/Images/uploads/',
-        }),
+        heroImage: fields.text({ label: 'Hero Image' }),
         heroImageAlt: fields.text({ label: 'Hero Image Alt' }),
         heroBg: fields.select({
           label: 'Hero Background',
