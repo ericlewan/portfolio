@@ -48,7 +48,7 @@
 .cursor--type-external .cursor-icon--eye      { display: none; }
 .cursor--type-external .cursor-icon--arrow    { display: flex; }
 .cursor--wip .cursor-icon--eye      { display: none; }
-.cursor--wip .cursor-icon--hourglass { display: flex; }
+.cursor--wip .cursor-icon--hourglass { display: flex; animation: spin 1.2s linear infinite; }
 
 @keyframes spin {
   from { transform: rotate(0deg) scale(1); }
@@ -536,35 +536,6 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
 
 /* WIP badge — shown on desktop hover, revealed on mobile tap */
 .card-wip-badge { display: none; }
-
-@media (hover: hover) {
-  .card--classified:hover .card-wip-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--accent);
-    color: #fff;
-    font-family: 'Geist Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-radius: 36px;
-    padding: 6px 16px;
-    white-space: nowrap;
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  .card--classified:hover .card-wip-badge svg {
-    flex-shrink: 0;
-    animation: spin 1.2s linear infinite;
-  }
-}
 .card-classified-inner {
   display: flex;
   flex-direction: column;
