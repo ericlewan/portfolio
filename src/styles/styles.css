@@ -1151,12 +1151,12 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
   .nav-identity .nav-divider { display: none; }
 
   /* Show hamburger, hide desktop links */
-  .nav-inner   { justify-content: flex-start; }
+  .nav-inner   { justify-content: flex-start; gap: 12px; }
   .nav-toggle  { display: flex; }
   .nav-links   { display: none; }
-  .nav-right   { gap: 20px; margin-left: auto; }
-  .theme-toggle { width: 32px; height: 32px; border: none; border-radius: 0; }
-  .nav-toggle  { width: 32px; height: 32px; }
+  .nav-right   { gap: 0; margin-left: auto; }
+  .theme-toggle { width: 36px; height: 36px; border: 1px solid var(--ink-faint); border-radius: 50%; }
+  .nav-toggle  { width: 36px; height: 36px; border: 1px solid var(--ink-faint); border-radius: 50%; opacity: 0.6; }
   .theme-icon, .nav-toggle-icon { width: 18px; height: 18px; }
 
   /* Full-screen overlay when open */
