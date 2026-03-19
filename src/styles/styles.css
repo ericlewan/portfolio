@@ -809,6 +809,10 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
   from { opacity: 0; transform: scale(1.03); }
   to   { opacity: 1; transform: scale(1); }
 }
+@keyframes avatar-in {
+  from { opacity: 0; transform: scale(0.82); }
+  to   { opacity: 1; transform: scale(1); }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .anim-in {
@@ -819,6 +823,10 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
     animation: cs-scale-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     animation-delay: var(--anim-delay, 0.1s);
   }
+  .anim-in--avatar {
+    animation: avatar-in 0.7s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+    animation-delay: var(--anim-delay, 0s);
+  }
   .anim-init {
     opacity: 0;
     transform: translateY(16px);
@@ -827,6 +835,11 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
     opacity: unset;
     transform: unset;
   }
+  /* Stagger project cards when they scroll into view */
+  .project-grid .card:nth-child(1) { --anim-delay: 0s; }
+  .project-grid .card:nth-child(2) { --anim-delay: 0.07s; }
+  .project-grid .card:nth-child(3) { --anim-delay: 0.14s; }
+  .project-grid .card:nth-child(4) { --anim-delay: 0.21s; }
 }
 
 /* Image blocks */
