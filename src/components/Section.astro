@@ -6,7 +6,7 @@ interface Props {
 const { heading, noPaddingTop = false } = Astro.props;
 ---
 
-<section class="cs-section" style={noPaddingTop ? 'padding-top: 0;' : undefined}>
+<section class="cs-section anim-init" style={noPaddingTop ? 'padding-top: 0;' : undefined}>
   <div class="cs-section-inner">
     <div class="cs-col-left">
       <h2 class="cs-section-heading">{heading}</h2>

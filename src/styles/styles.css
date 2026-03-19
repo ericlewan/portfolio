@@ -712,11 +712,26 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
 }
 .cs-share:hover { opacity: 1; border-color: var(--ink); }
 
-.cs-views {
+.cs-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cs-view-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
+  user-select: none;
 }
-.cs-views.loaded { opacity: 1; }
+.cs-view-count.loaded { opacity: 0.45; }
 
 .cs-eyebrow {
   font-family: 'Geist Mono', monospace;
@@ -784,6 +799,35 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
   transition: border-color 0.15s;
 }
 .cs-meta-link:hover { border-bottom-color: var(--ink); }
+
+/* ─── Entrance animations ───────────────────────────────────────────────── */
+@keyframes cs-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes cs-scale-reveal {
+  from { opacity: 0; transform: scale(1.03); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .anim-in {
+    animation: cs-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--anim-delay, 0s);
+  }
+  .anim-in--scale {
+    animation: cs-scale-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--anim-delay, 0.1s);
+  }
+  .anim-init {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  .anim-init.anim-in {
+    opacity: unset;
+    transform: unset;
+  }
+}
 
 /* Image blocks */
 .cs-image-block--pale    { background: #F5F7FF; }
