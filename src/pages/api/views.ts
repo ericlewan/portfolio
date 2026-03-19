@@ -1,7 +1,10 @@
 import type { APIRoute } from 'astro';
 import { Redis } from '@upstash/redis';
 
-const headers = { 'Content-Type': 'application/json' };
+const headers = {
+  'Content-Type': 'application/json',
+  'Cache-Control': 'no-store',
+};
 
 function getRedis() {
   const url = import.meta.env.UPSTASH_REDIS_REST_URL;
