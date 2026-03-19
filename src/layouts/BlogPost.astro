@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { title, date, description } = Astro.props;
-const pageTitle = `${title.replace(/<[^>]+>/g, '')} — Yaroslav Kovalchuk`;
+const pageTitle = `${title.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').trim()} — Yaroslav Kovalchuk`;
 const canonical = `https://yaroslav.design${Astro.url.pathname}`;
 const displayDate = new Date(date + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 ---

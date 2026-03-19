@@ -9,6 +9,10 @@ node_modules/
 dist/
 .astro/
 
+# Environment variables
+.env
+.env.*
+
 # Root-level personal documents (not part of the site)
 /*.md
 /*.tsx

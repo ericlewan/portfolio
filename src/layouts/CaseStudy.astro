@@ -38,7 +38,7 @@ const {
   nextProject,
 } = Astro.props;
 
-const pageTitle = `${title.replace(/<[^>]+>/g, '')} — Yaroslav Kovalchuk`;
+const pageTitle = `${title.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').trim()} — Yaroslav Kovalchuk`;
 const canonical = `https://yaroslav.design${Astro.url.pathname}`;
 ---
 
