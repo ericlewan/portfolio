@@ -79,20 +79,10 @@ const {
 
   <script>
     const cursor = document.getElementById('cursor')!;
-    let mouseX = -100, mouseY = -100;
-    let curX = -100, curY = -100;
 
-    function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
-
-    function animate() {
-      curX = lerp(curX, mouseX, 0.20);
-      curY = lerp(curY, mouseY, 0.20);
-      cursor.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+    document.addEventListener('mousemove', e => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    });
     document.addEventListener('mouseleave', () => cursor.classList.add('cursor--hidden'));
     document.addEventListener('mouseenter', () => cursor.classList.remove('cursor--hidden'));
 
