@@ -51,12 +51,20 @@ const canonical = `https://yaroslav.design${Astro.url.pathname}`;
   <!-- HEADER -->
   <header class="cs-header">
     <div class="cs-header-inner">
-      <a href="/" class="cs-back">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M11 7H3M3 7L6.5 3.5M3 7L6.5 10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Work
-      </a>
+      <div class="cs-header-top">
+        <a href="/" class="cs-back">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M11 7H3M3 7L6.5 3.5M3 7L6.5 10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Work
+        </a>
+        <button class="cs-share" id="share-btn" aria-label="Share">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="cs-share-label">Share</span>
+        </button>
+      </div>
       <p class="cs-eyebrow">{eyebrow}</p>
       <h1 class="cs-title" set:html={title} />
       <p class="cs-intro">{intro}</p>
@@ -79,9 +87,57 @@ const canonical = `https://yaroslav.design${Astro.url.pathname}`;
             )}
           </p>
         </div>
+        <div class="cs-meta-item">
+          <p class="cs-meta-label">Views</p>
+          <p class="cs-meta-value cs-views" id="view-count">—</p>
+        </div>
       </div>
     </div>
   </header>
+
+  <script>
+    // View count
+    (async () => {
+      const path = window.location.pathname;
+      const sessionKey = `viewed:${path}`;
+      const el = document.getElementById('view-count');
+      try {
+        let views: number;
+        if (sessionStorage.getItem(sessionKey)) {
+          const res = await fetch(`/api/views?path=${encodeURIComponent(path)}`);
+          views = (await res.json()).views;
+        } else {
+          const res = await fetch(`/api/views?path=${encodeURIComponent(path)}`, { method: 'POST' });
+          views = (await res.json()).views;
+          sessionStorage.setItem(sessionKey, '1');
+        }
+        if (el) {
+          el.textContent = views > 0 ? views.toLocaleString() : '—';
+          el.classList.add('loaded');
+        }
+      } catch {}
+    })();
+
+    // Share button
+    const shareBtn = document.getElementById('share-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', async () => {
+        const url = window.location.href;
+        const label = shareBtn.querySelector('.cs-share-label') as HTMLElement;
+        try {
+          if (navigator.share) {
+            await navigator.share({ title: document.title, url });
+          } else {
+            await navigator.clipboard.writeText(url);
+            if (label) {
+              label.textContent = 'Copied!';
+              setTimeout(() => { label.textContent = 'Share'; }, 2000);
+            }
+          }
+        } catch {}
+      });
+    }
+  </script>
 
   <!-- HERO IMAGE -->
   <div class={`cs-image-block cs-image-block--${heroBg}`}>

@@ -548,6 +548,40 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
 }
 .cs-back:hover { opacity: 1; }
 
+.cs-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 52px;
+}
+.cs-header-top .cs-back {
+  margin-bottom: 0;
+}
+
+.cs-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: none;
+  border: 1px solid var(--ink-faint);
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.15s, border-color 0.15s;
+}
+.cs-share:hover { opacity: 1; border-color: var(--ink); }
+
+.cs-views {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.cs-views.loaded { opacity: 1; }
+
 .cs-eyebrow {
   font-family: 'Geist Mono', monospace;
   font-size: 13px;
@@ -1001,7 +1035,7 @@ body.nav-is-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) r
 
   /* Case study header */
   .cs-header        { padding: 32px var(--pad) 52px; }
-  .cs-back          { margin-bottom: 36px; }
+  .cs-header-top    { margin-bottom: 36px; }
   .cs-title         { font-size: 36px; margin-bottom: 20px; }
   .cs-intro         { font-size: 16px; margin-bottom: 36px; }
   .cs-meta          { gap: 20px; }
