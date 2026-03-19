@@ -21,21 +21,35 @@ const { activePage, isHome = false } = Astro.props;
         <span class="nav-dim">Product Designer</span>
       </a>
     )}
-    <div class="nav-links">
-      <a href={isHome ? '#work' : '/'} class={`nav-link ${activePage === 'work' ? 'nav-link--active' : 'nav-link--dim'}`}>Work</a>
-      <a href="/about" class={`nav-link ${activePage === 'about' ? 'nav-link--active' : 'nav-link--dim'}`}>About</a>
-      <a href="/blog" class={`nav-link ${activePage === 'writing' ? 'nav-link--active' : 'nav-link--dim'}`}>Writing</a>
-      <a href="#" class="nav-link nav-link--dim nav-link--arrow nav-link--resume">
-        Resume
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3.5 12.5L12.5 3.5M12.5 3.5H6M12.5 3.5V10" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href={isHome ? '#work' : '/'} class={`nav-link ${activePage === 'work' ? 'nav-link--active' : 'nav-link--dim'}`}>Work</a>
+        <a href="/about" class={`nav-link ${activePage === 'about' ? 'nav-link--active' : 'nav-link--dim'}`}>About</a>
+        <a href="/blog" class={`nav-link ${activePage === 'writing' ? 'nav-link--active' : 'nav-link--dim'}`}>Writing</a>
+        <a href="#" class="nav-link nav-link--dim nav-link--arrow nav-link--resume">
+          Resume
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.5 12.5L12.5 3.5M12.5 3.5H6M12.5 3.5V10" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="theme-icon theme-icon--moon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
-      </a>
+        <svg class="theme-icon theme-icon--sun" width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+          <path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M17.66 6.34l-1.41 1.41M6.34 17.66l-1.41 1.41"/>
+        </svg>
+      </button>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu">
-      <span></span>
-      <span></span>
-      <span></span>
+      <svg class="nav-toggle-icon nav-toggle-icon--menu" width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg class="nav-toggle-icon nav-toggle-icon--close" width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18M6 6l12 12"/>
+      </svg>
     </button>
   </div>
 </nav>

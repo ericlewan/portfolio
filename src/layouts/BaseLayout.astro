@@ -26,6 +26,17 @@ const {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Prevent flash of wrong theme -->
+  <script is:inline>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- SEO -->
@@ -79,9 +90,17 @@ const {
 
   <script>
     const cursor = document.getElementById('cursor')!;
+    let mouseX = 0, mouseY = 0, rafId: number;
 
     document.addEventListener('mousemove', e => {
-      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!rafId) {
+        rafId = requestAnimationFrame(() => {
+          cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+          rafId = 0;
+        });
+      }
     });
     document.addEventListener('mouseleave', () => cursor.classList.add('cursor--hidden'));
     document.addEventListener('mouseenter', () => cursor.classList.remove('cursor--hidden'));
@@ -96,6 +115,153 @@ const {
     navToggle.addEventListener('click', () => document.body.classList.toggle('nav-is-open'));
     document.querySelectorAll('.nav-links a').forEach(a => {
       a.addEventListener('click', () => document.body.classList.remove('nav-is-open'));
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+
+    function playToggleSound(toDark: boolean) {
+      try {
+        const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const bufferSize = Math.floor(ctx.sampleRate * 0.055);
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.12));
+        }
+        const source = ctx.createBufferSource();
+        source.buffer = buffer;
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.value = toDark ? 700 : 1100;
+        filter.Q.value = 0.8;
+        const gain = ctx.createGain();
+        gain.gain.value = 0.35;
+        source.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+        source.start();
+      } catch(e) {}
+    }
+
+    let toggleCount = 0;
+    let toggleResetTimer: ReturnType<typeof setTimeout>;
+
+    function showEasterEgg() {
+      if (document.querySelector('.egg-overlay')) return;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'egg-overlay';
+
+      const canvas = document.createElement('canvas');
+      const msg = document.createElement('div');
+      msg.className = 'egg-msg';
+      msg.textContent = 'make up your mind.';
+
+      overlay.appendChild(canvas);
+      overlay.appendChild(msg);
+      document.body.appendChild(overlay);
+
+      // Matrix rain
+      const c = canvas.getContext('2d')!;
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const CHARS = 'LIGHTDARKLIGHTDARKLIGHTDARK01';
+      const FS = 13;
+      const cols = Math.floor(canvas.width / FS);
+      const drops = Array.from({ length: cols }, () => -Math.floor(Math.random() * 20));
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+      const rainInterval = setInterval(() => {
+        c.fillStyle = isDark ? 'rgba(18,20,26,0.08)' : 'rgba(255,255,255,0.08)';
+        c.fillRect(0, 0, canvas.width, canvas.height);
+        c.font = `${FS}px "Geist Mono",monospace`;
+        c.textAlign = 'center';
+        for (let i = 0; i < cols; i++) {
+          const alpha = (0.08 + Math.random() * 0.35).toFixed(2);
+          c.fillStyle = `rgba(255,85,0,${alpha})`;
+          c.fillText(CHARS[Math.floor(Math.random() * CHARS.length)], i * FS + FS / 2, drops[i] * FS);
+          if (drops[i] * FS > canvas.height && Math.random() > 0.97) drops[i] = 0;
+          drops[i] += 0.6 + Math.random() * 0.4;
+        }
+      }, 33);
+
+      // Sound — glitchy TV-static burst fading into a low drone
+      try {
+        const actx = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const dur = 5.5;
+
+        // White noise burst
+        const bufSize = Math.floor(actx.sampleRate * dur);
+        const buf = actx.createBuffer(1, bufSize, actx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < bufSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (actx.sampleRate * 1.2));
+        }
+        const noise = actx.createBufferSource();
+        noise.buffer = buf;
+
+        const noiseFilter = actx.createBiquadFilter();
+        noiseFilter.type = 'bandpass';
+        noiseFilter.frequency.value = 900;
+        noiseFilter.Q.value = 0.4;
+
+        const noiseGain = actx.createGain();
+        noiseGain.gain.setValueAtTime(0.55, actx.currentTime);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + dur);
+
+        noise.connect(noiseFilter);
+        noiseFilter.connect(noiseGain);
+        noiseGain.connect(actx.destination);
+        noise.start();
+
+        // Low drone underneath
+        const osc = actx.createOscillator();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(55, actx.currentTime);
+        osc.frequency.linearRampToValueAtTime(42, actx.currentTime + dur);
+
+        const droneFilter = actx.createBiquadFilter();
+        droneFilter.type = 'lowpass';
+        droneFilter.frequency.value = 180;
+
+        const droneGain = actx.createGain();
+        droneGain.gain.setValueAtTime(0.18, actx.currentTime);
+        droneGain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + dur);
+
+        osc.connect(droneFilter);
+        droneFilter.connect(droneGain);
+        droneGain.connect(actx.destination);
+        osc.start();
+        osc.stop(actx.currentTime + dur);
+      } catch(e) {}
+
+      // Animate in
+      requestAnimationFrame(() => overlay.classList.add('egg-overlay--visible'));
+
+      // Auto-dismiss after 5.5s — no click-to-skip, user must see the whole thing
+      const dismiss = () => {
+        clearInterval(rainInterval);
+        overlay.classList.remove('egg-overlay--visible');
+        setTimeout(() => overlay.remove(), 400);
+      };
+      setTimeout(dismiss, 5500);
+    }
+
+    themeToggle?.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      playToggleSound(!isDark);
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      toggleCount++;
+      clearTimeout(toggleResetTimer);
+      toggleResetTimer = setTimeout(() => { toggleCount = 0; }, 3000);
+      if (toggleCount >= 7) {
+        toggleCount = 0;
+        showEasterEgg();
+      }
     });
   </script>
 

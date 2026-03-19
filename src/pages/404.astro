@@ -143,11 +143,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--bg);
     background: var(--ink);
     border-radius: 100px;
     text-decoration: none;
-    transition: background 0.18s;
+    transition: background 0.18s, color 0.18s;
   }
 
   .nf-cta:hover {
@@ -195,8 +195,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   document.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
 
   function drawFrame() {
-    // Semi-transparent white blanket → creates the fading trail
-    ctx.fillStyle = 'rgba(255,255,255,0.048)';
+    // Semi-transparent blanket — adapts to light/dark theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    ctx.fillStyle = isDark ? 'rgba(18,20,26,0.048)' : 'rgba(255,255,255,0.048)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.font = `${FS}px "Geist Mono",monospace`;
