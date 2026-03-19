@@ -7,6 +7,7 @@ const caseStudies = defineCollection({
     eyebrow: z.string().optional().default(''),
     company: z.string().optional().default(''),
     companyUrl: z.string().optional(),
+    companyLabel: z.string().optional().default('Product'),
     role: z.string().optional().default(''),
     timeline: z.string().optional().default(''),
     intro: z.string().optional().default(''),

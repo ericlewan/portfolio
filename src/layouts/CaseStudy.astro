@@ -11,6 +11,7 @@ interface Props {
   eyebrow: string;
   company: string;
   companyUrl?: string;
+  companyLabel?: string;
   role: string;
   timeline: string;
   intro: string;
@@ -27,6 +28,7 @@ const {
   eyebrow,
   company,
   companyUrl,
+  companyLabel = 'Product',
   role,
   timeline,
   intro,
@@ -87,7 +89,7 @@ const canonical = `https://yaroslav.design${Astro.url.pathname}`;
           <p class="cs-meta-value">{timeline}</p>
         </div>
         <div class="cs-meta-item">
-          <p class="cs-meta-label">Company</p>
+          <p class="cs-meta-label">{companyLabel}</p>
           <p class="cs-meta-value">
             {companyUrl ? (
               <a href={companyUrl} target="_blank" rel="noopener" class="cs-meta-link">{company} ↗</a>
