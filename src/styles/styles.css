@@ -130,12 +130,10 @@ html[data-theme="dark"] .avatar {
   border-color: rgba(221, 225, 237, 0.08);
 }
 
-html[data-theme="dark"] .hero-cta {
-  background: var(--ink);
+html[data-theme="dark"] .pill-link {
   color: #12141A;
 }
-html[data-theme="dark"] .hero-cta:hover {
-  background: var(--accent);
+html[data-theme="dark"] .pill-link:hover {
   color: #fff;
 }
 
@@ -405,12 +403,11 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
 }
 
 /* Hero CTA */
-.hero-cta {
+/* Shared filled pill button/link */
+.pill-link {
   display: inline-flex;
   align-items: center;
-  align-self: flex-start;
   gap: 8px;
-  margin-top: 28px;
   padding: 11px 22px;
   font-family: 'Geist Mono', monospace;
   font-size: 14px;
@@ -421,11 +418,14 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
   background: var(--ink);
   border-radius: 100px;
   text-decoration: none;
-  transition: background 0.18s;
+  transition: background 0.18s, color 0.18s;
 }
+.pill-link:hover { background: var(--accent); }
 
-.hero-cta:hover {
-  background: var(--accent);
+/* Hero CTA layout specifics */
+.hero-cta {
+  align-self: flex-start;
+  margin-top: 28px;
 }
 
 /* Timeline */
