@@ -606,6 +606,7 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
   border-top: 1px solid var(--ink-faint);
 }
 
+/* Bottom bar */
 .footer-inner {
   max-width: var(--max-w);
   margin: 0 auto;
@@ -618,27 +619,30 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
 .footer-identity {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: 'Geist Mono', monospace;
-  font-size: 16px;
-  letter-spacing: 0.01em;
+  font-size: 12px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink);
+  opacity: 0.4;
 }
+
+.footer-year { opacity: 1; }
 
 .footer-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 28px;
 }
 
 .footer-link {
   font-family: 'Geist Mono', monospace;
-  font-size: 16px;
-  letter-spacing: 0.01em;
+  font-size: 12px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink);
-  opacity: 0.6;
+  opacity: 0.5;
   transition: opacity 0.15s;
 }
 .footer-link:hover { opacity: 1; }
@@ -1231,10 +1235,8 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
   .card-label   { font-size: 13px; }
 
   /* Footer */
-  .footer-inner     { flex-direction: column; gap: 20px; align-items: flex-start; padding: 24px var(--pad); }
-  .footer-identity  { font-size: 12px; gap: 6px; }
+  .footer-inner     { flex-direction: column; gap: 16px; align-items: flex-start; padding: 20px var(--pad); }
   .footer-links     { gap: 16px; flex-wrap: wrap; }
-  .footer-link      { font-size: 13px; }
 
   /* Case study header */
   .cs-header        { padding: 32px var(--pad) 52px; }
