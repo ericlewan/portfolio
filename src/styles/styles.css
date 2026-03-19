@@ -1146,8 +1146,8 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
 
   /* Nav */
   .nav-inner    { padding: 18px var(--pad); }
-  .nav-identity { font-size: 12px; gap: 6px; }
-  .nav-identity .nav-dim { display: none; }
+  .nav-identity { font-size: 12px; gap: 1px 6px; flex-wrap: wrap; }
+  .nav-identity .nav-dim { display: block; width: 100%; opacity: 0.45; }
   .nav-identity .nav-divider { display: none; }
 
   /* Show hamburger, hide desktop links */
@@ -1212,10 +1212,11 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
 
   /* Timeline */
   .timeline     { font-size: 14px; }
-  .timeline tr  { gap: 12px; flex-wrap: wrap; }
-  .timeline-year    { width: 60px; }
+  .timeline tr  { gap: 0 12px; flex-wrap: wrap; align-items: flex-start; margin-bottom: 8px; }
+  .timeline tr:last-child { margin-bottom: 0; }
+  .timeline-year    { width: 60px; padding-top: 1px; }
   .timeline-company { width: auto; }
-  .timeline-role    { width: 100%; padding-left: 72px; margin-top: -4px; font-size: 13px; }
+  .timeline-role    { width: 100%; padding-left: 72px; margin-top: 3px; font-size: 13px; }
 
   /* Work section */
   .work-inner   { padding: 40px var(--pad) 64px; gap: 24px; }
@@ -1303,5 +1304,4 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
 @media (max-width: 380px) {
   .hero-heading { font-size: 28px; }
   .cs-title     { font-size: 30px; }
-  .timeline-role { display: none; }
 }
