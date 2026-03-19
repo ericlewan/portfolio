@@ -107,16 +107,17 @@ const canonical = `https://yaroslav.design${Astro.url.pathname}`;
       const sessionKey = `viewed:${path}`;
       const wrapper = document.getElementById('view-count');
       const numEl = wrapper?.querySelector('.cs-view-count-num');
-      try {
-        let views: number;
-        if (sessionStorage.getItem(sessionKey)) {
-          const res = await fetch(`/api/views?path=${encodeURIComponent(path)}`);
-          views = (await res.json()).views;
-        } else {
+      // Increment on first visit — don't let failure block the display
+      if (!sessionStorage.getItem(sessionKey)) {
+        try {
           const res = await fetch(`/api/views?path=${encodeURIComponent(path)}`, { method: 'POST' });
-          views = (await res.json()).views;
-          sessionStorage.setItem(sessionKey, '1');
-        }
+          if (res.ok) sessionStorage.setItem(sessionKey, '1');
+        } catch {}
+      }
+      // Always read and display current count
+      try {
+        const res = await fetch(`/api/views?path=${encodeURIComponent(path)}`);
+        const views: number = (await res.json()).views;
         if (wrapper && numEl && views > 0) {
           numEl.textContent = views.toLocaleString();
           wrapper.classList.add('loaded');
