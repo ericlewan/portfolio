@@ -1267,13 +1267,32 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
   * { cursor: auto !important; }
   .cursor { display: none !important; }
 
-  /* Classified card tap — grayscale + badge springs in */
+  /* Classified card tap — grayscale + ink overlay + badge springs in */
+  .card--classified .card-image {
+    position: relative;
+  }
+
   .card--classified .card-img {
     transition: filter 0.35s ease;
   }
 
   .card--classified.is-tapped .card-img {
-    filter: grayscale(1) brightness(0.7);
+    filter: grayscale(1) brightness(0.8);
+  }
+
+  /* Ink-tinted overlay to pull grayscale into the site palette */
+  .card--classified .card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(48, 55, 78, 0);
+    transition: background 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .card--classified.is-tapped .card-image::after {
+    background: rgba(48, 55, 78, 0.45);
   }
 
   /* Badge springs in centered over the image */
