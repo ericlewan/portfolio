@@ -103,7 +103,7 @@ const canonical = `https://yaroslav.design${Astro.url.pathname}`;
   <script>
     // View count
     (async () => {
-      const path = window.location.pathname;
+      const path = window.location.pathname.replace(/\/+$/, '') || '/';
       const sessionKey = `viewed:${path}`;
       const wrapper = document.getElementById('view-count');
       const numEl = wrapper?.querySelector('.cs-view-count-num');

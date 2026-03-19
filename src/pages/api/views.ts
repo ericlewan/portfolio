@@ -10,8 +10,13 @@ function getRedis() {
   return new Redis({ url, token });
 }
 
+function normalizePath(raw: string | null): string | null {
+  if (!raw) return null;
+  return raw.replace(/\/+$/, '') || '/';
+}
+
 export const GET: APIRoute = async ({ url }) => {
-  const path = url.searchParams.get('path');
+  const path = normalizePath(url.searchParams.get('path'));
   if (!path) return new Response(JSON.stringify({ views: 0 }), { headers });
   try {
     const redis = getRedis();
@@ -24,7 +29,7 @@ export const GET: APIRoute = async ({ url }) => {
 };
 
 export const POST: APIRoute = async ({ url }) => {
-  const path = url.searchParams.get('path');
+  const path = normalizePath(url.searchParams.get('path'));
   if (!path) return new Response(JSON.stringify({ views: 0 }), { status: 400, headers });
   try {
     const redis = getRedis();
