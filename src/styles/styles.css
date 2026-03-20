@@ -1260,6 +1260,7 @@ body.nav-is-open .nav-toggle-icon--close { opacity: 1; transform: rotate(0deg); 
   /* Next section */
   .cs-next-inner    { padding: 40px var(--pad); }
   .cs-next-title    { font-size: 28px; gap: 10px; }
+
 }
 
 /* Hide custom cursor on touch / mobile devices */

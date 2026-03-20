@@ -24,7 +24,7 @@ const { activePage, isHome = false } = Astro.props;
     <div class="nav-right">
       <div class="nav-links">
         <a href={isHome ? '#work' : '/'} class={`nav-link ${activePage === 'work' ? 'nav-link--active' : 'nav-link--dim'}`}>Work</a>
-        <a href="/about" class={`nav-link ${activePage === 'about' ? 'nav-link--active' : 'nav-link--dim'}`}>About</a>
+
         <a href="/blog" class={`nav-link ${activePage === 'writing' ? 'nav-link--active' : 'nav-link--dim'}`}>Writing</a>
         <a href="#" class="nav-link nav-link--dim nav-link--arrow nav-link--resume">
           Resume
