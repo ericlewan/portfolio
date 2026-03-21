@@ -30,7 +30,7 @@ Headway is the world's most downloaded book summary app — 150M+ downloads, 55+
 2025 — present
 EdTech. 55M+ users. Designing conversion flows, onboarding, and growth experiments at scale.
 
-**Quidget — Founding Product Designer**
+**Quidget — Founding Designer**
 2023 — 2025
 AI-powered customer support SaaS. Built everything from scratch: brand, design language, component system, onboarding, dashboard, marketing site, and customer-facing Web Chat widget. Designed the AI Agent onboarding experience that reduced setup from hours to under two minutes. Visual system scaled to hundreds of businesses without structural rebuild.
 
